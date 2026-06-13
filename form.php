@@ -15,7 +15,7 @@
     </div>
 
     <!-- form id -->
-    <form id="user-registration-form" action="MyFirstHandler.php" method="post"> // form action to send data to MyFirstHandler.php and method post to send data with the keys
+    <form id="user-registration-form" action="MyFirstHandler.php" method="post"> <!-- form action to send data to MyFirstHandler.php and method post to send data with the keys -->
         <div class="left-side">
             <div class="user-info">
                 <p> Please give your first name. </p>
