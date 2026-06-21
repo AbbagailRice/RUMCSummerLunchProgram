@@ -3,7 +3,7 @@
     session_start();
 
     //connect to the database
-    require_once 'db_connection.php';
+    require_once 'db_connect.php';
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //get the username and password from the form 
