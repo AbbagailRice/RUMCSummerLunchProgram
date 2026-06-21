@@ -2,69 +2,53 @@
 <html>
 
 <head>
-    <title> My Website Demo </title>
-        <link rel="stylesheet" type="text/css" href="CSS/myStyle.css">
+    <title> Summer Lunch Program Login Page </title>
+        <link rel="stylesheet" type="text/css" href="CSS/Style.css">
 
 </head>
 
 <body>
-    <h1> Home!</h1>
-    <div class="navigation">
-        <a href="index.php"> Home </a>
-        <a href="videos.html"> Videos </a>
-        <a href="photos.html"> Photos </a>
-        <a href="form.php"> My Form </a>
-        <a href="pages/page5.html"> Folder Page </a>
+    <div class="background-image">
+        <!-- <img src="photos/logo.png" alt="background"> -->
     </div>
 
-    <h2> names starting with J: </h2>
-    <?php
-        $names = array("John", "Jane", "Jack", "Jill", "James");
-        foreach ($names as $name) {
-            echo "$name<br>";
-        }
-    ?>
+    <div class="logo-header">
+        <div class="logo">
+            <!-- <img src="photos/logo.png" alt="Logo"> -->
+        </div>
+        <h1>Summer Lunch <br> Program</h1>
+    </div>
 
-    <h2> Simple Calculator </h2>
-    <form action="index.php" method="post">
-        <input type="number" name="num1" placeholder="Number 1" required>
+    <div class="auth-card">
+        
+        <div class= 'login-section'>
+            <h2>Login </h2>
+                <form action="login.php" method="post">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required><br><br>
 
-        <label><input type="radio" name="operation" value="add" checked> + </label>
-        <label><input type="radio" name="operation" value="subtract"> - </label>
-        <label><input type="radio" name="operation" value="multiply"> * </label>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required><br><br>
 
-        <input type="number" name="num2" placeholder="Number 2" required>
-        <input type="submit" value="Calculate">
-    </form>
-    <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $num1 = $_POST["num1"];
-            $num2 = $_POST["num2"];
-            $operation = $_POST["operation"];
-            $result = 0;
+                    <input type="submit" value="Login">
+                </form>
+            </div>
 
-            switch ($operation) {
-                case "add":
-                    $result = $num1 + $num2;
-                    break;
-                case "subtract":
-                    $result = $num1 - $num2;
-                    break;
-                case "multiply":
-                    $result = $num1 * $num2;
-                    break;
-            }
+            <div class= 'middle-divider'>
+                or
+            </div>
+            
+            <div class= 'register-section'>
+                <a href="register.php" class="btn-register">
+                    Sign Up with Email
+                </a>
+            </div>
 
-            echo "<h3> Result: $result </h3>";
-        }
-        ?>
+        </div>
 
-    <h2> Submit to processing </h2>
-    <form action="processing.php" method="post">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="submit" value="Submit">
-    </form>
+
+    </div>
+
     
 </body>
 
