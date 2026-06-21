@@ -1,4 +1,4 @@
-FROM php:8.2-apach
+FROM php:8.2-apache
 
 # pdo dependancies for db connection
 RUN docker-php-ext-install pdo pdo_mysql && docker-php-ext-enable pdo_mysql
