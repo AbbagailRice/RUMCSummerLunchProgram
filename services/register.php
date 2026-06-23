@@ -41,6 +41,9 @@
                     'is_admin'    => 0
 
                 ]);
+            } catch (PDOException $e) {
+                // if there is an issue.
+                echo "An error occurred while processing your registration request.";
             }
         } 
 

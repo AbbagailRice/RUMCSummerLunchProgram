@@ -32,8 +32,8 @@
             <input type="text" id="last_name" name="last_name" required>
 
             <label for="contact">Contact:</label>
-            <input type="email" id="contact" name="contact" required>
-            
+            <input type="text" id="contact" name="contact" required>
+
             <label for="has_keys"> Do you have a set of keys to the building?:</label>
             <input type="checkbox" id="has_keys" name="has_keys" value="1"> // 1 for true 0 is default set on register.php if it not 1.
 
