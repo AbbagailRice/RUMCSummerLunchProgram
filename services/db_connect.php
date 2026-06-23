@@ -36,7 +36,7 @@ catch (PDOException $e) {
         $ch = curl_init($url);
 
         //config rules of the connection
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST"); //POST for changing something not getting
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT"); //POST for changing something not getting
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // get the answer from avien back but dont display it save as var
         
         //pass the details
@@ -62,7 +62,7 @@ catch (PDOException $e) {
         echo "<h3>Raw Aiven API Response Server Feedback:</h3>";
         echo "<pre>" . htmlspecialchars($response) . "</pre>";
         exit();
-        
+
         //debugging
         if ($response && strpos($response, 'errors') !== false) {
             die("Aiven API rejected request: " . $response);
