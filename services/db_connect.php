@@ -36,7 +36,7 @@ catch (PDOException $e) {
         $ch = curl_init($url);
 
         //config rules of the connection
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT"); //PUT for changing something not getting
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST"); //POST for changing something not getting
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // get the answer from avien back but dont display it save as var
         
         //pass the details
@@ -46,11 +46,19 @@ catch (PDOException $e) {
         ]);
 
         // power DB on
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(["powered" => true]));
+        $payload = [
+            "powered" => true
+        ];
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
 
         //clean up
         $response = curl_exec($ch); //send msg
         curl_close($ch); //shut down connection when done
+        
+        //debugging
+        if ($response && strpos($response, 'errors') !== false) {
+            die("Aiven API rejected request: " . $response);
+        }
 
         //lt user know what is happening 
         die("The database was asleep. We are waking it up for you! Please refresh this page in 2-3 minutes.");
