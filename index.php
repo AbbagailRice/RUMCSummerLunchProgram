@@ -22,7 +22,7 @@
     <div class="auth-card">
         
         <div class= 'login-section'>
-            <form action="login.php" method="post">
+            <form action="services/login.php" method="post">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required><br><br>
 
@@ -31,6 +31,7 @@
 
                 <input type="submit" value="Login">
             </form>
+
         </div>
 
         <div class= 'middle-divider'>
@@ -38,8 +39,8 @@
         </div>
         
         <div class= 'register-section'>
-            <a href="register.php" class="btn-register">
-                Sign Up with Email
+            <a href="spages/register.php" class="btn-register">
+                Request an Account.
             </a>
         </div>
 

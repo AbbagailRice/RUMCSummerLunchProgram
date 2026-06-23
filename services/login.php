@@ -13,7 +13,8 @@
         //make sure the username and password are not empty
         if (!empty($username) && !empty($password)) {
             //get the user from the database (including fname, username, password, and is_approved) and limit to 1 result
-            $stmt = $pdo->prepare("SELECT volunteer_id, first_name, username, password, is_approved FROM volunteers WHERE username = :username LIMIT 1");
+            $stmt = $pdo->prepare("SELECT volunteer_id, first_name, username, password, 
+                is_approved, is_admin FROM volunteers WHERE username = :username LIMIT 1");
             $stmt->execute(['username' => $username]); //run query using the provided parameter, do this way to prevent SQL injection
             $user = $stmt->fetch(); //get res as array
 
@@ -27,9 +28,15 @@
                     $_SESSION['first_name'] = $user['first_name'];
                     $_SESSION['username'] = $user['username'];
 
-                    //send them to the dashboard page
-                    header("Location: pages/dashboard.php");
-                    exit();
+                    if ($_SESSION['is_admin'] == 1) {
+                        // check if admin
+                        header("Location: ../pages/admin_dashboard.php");
+                    } else {
+                        // normal vonunteer goes to normal dash
+                        header("Location: ../pages/dashboard.php");
+                    }
+                    exit(); // exit after redirect
+
                 } else {
                     //user is not approved, show error message
                     echo "Your account is not approved yet. Please wait for approval.";

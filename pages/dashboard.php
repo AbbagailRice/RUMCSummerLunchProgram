@@ -34,7 +34,7 @@
     <div class="dashboard-card">
         <h2>Welcome to the Dashboard!</h2>
         <p>This is the dashboard page.</p>
-        <a href="../logout.php" class="btn-logout">Logout</a>
+        <a href="../services/logout.php" class="btn-logout">Logout</a>
     </div>
 
 </body>
