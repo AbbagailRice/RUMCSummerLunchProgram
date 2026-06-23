@@ -41,7 +41,7 @@ catch (PDOException $e) {
         
         //pass the details
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            "Authorization: Bearer $api_token", //passes token
+            "Authorization: aivenv1 $api_token", //passes token
             "Content-Type: application/json" //hey this is a json
         ]);
 
@@ -54,7 +54,10 @@ catch (PDOException $e) {
 
         //lt user know what is happening 
         die("The database was asleep. We are waking it up for you! Please refresh this page in 2-3 minutes.");
+        echo "";
 
+    }else {
+        die("Database connection failed, and Aiven credentials are missing from Render environment variables.");
     }
 }
 
