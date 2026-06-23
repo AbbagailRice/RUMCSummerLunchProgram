@@ -1,7 +1,7 @@
 <?php
     require_once 'db_connect.php';
 
-    if ($_SERVER ['REQUEST _METHOD']=='POST'){
+    if ($_SERVER['REQUEST_METHOD']=='POST'){
         //grab andsanitize the param
         $first_name = trim($_POST['first_name']);
         $last_name = trim($_POST['last_name']);
@@ -26,8 +26,8 @@
                 //hash the password
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
                 //insert everthing
-                $insert_sql = "INSERT INTO volunteers (first_name, last_name, contact, username, password, has_keys, is_approved) 
-                           VALUES (:first_name, :last_name, :contact, :username, :password, :has_keys, :is_approved, :is_admin)";
+                $insert_sql = "INSERT INTO volunteers (first_name, last_name, contact, username, password, has_keys, is_approved, is_admin) 
+                    VALUES (:first_name, :last_name, :contact, :username, :password, :has_keys, :is_approved, :is_admin)";
             
                 $insert_stmt = $pdo->prepare($insert_sql);
                 $insert_stmt->execute([
@@ -41,6 +41,9 @@
                     'is_admin'    => 0
 
                 ]);
+                echo "Account request submitted. Please wait for an administrator to verify your account.";
+                echo "<br><a href='../index.php'>Return to Login Screen</a>";
+                
             } catch (PDOException $e) {
                 // if there is an issue.
                 echo "An error occurred while processing your registration request.";
