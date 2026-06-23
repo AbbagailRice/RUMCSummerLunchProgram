@@ -55,6 +55,14 @@ catch (PDOException $e) {
         $response = curl_exec($ch); //send msg
         curl_close($ch); //shut down connection when done
         
+        echo "<h2>System Action Notice:</h2>";
+        echo "<p>The database was asleep. We are waking it up for you! Please refresh this page in 2-3 minutes.</p>";
+        
+        echo "<hr>";
+        echo "<h3>Raw Aiven API Response Server Feedback:</h3>";
+        echo "<pre>" . htmlspecialchars($response) . "</pre>";
+        exit();
+        
         //debugging
         if ($response && strpos($response, 'errors') !== false) {
             die("Aiven API rejected request: " . $response);
