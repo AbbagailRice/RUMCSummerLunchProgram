@@ -27,6 +27,7 @@
                     $_SESSION['volunteer_id'] = $user['volunteer_id'];
                     $_SESSION['first_name'] = $user['first_name'];
                     $_SESSION['username'] = $user['username'];
+                    $_SESSION['is_admin']     = $user['is_admin'];
 
                     if ($_SESSION['is_admin'] == 1) {
                         // check if admin
