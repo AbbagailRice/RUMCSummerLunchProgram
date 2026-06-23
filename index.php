@@ -39,7 +39,7 @@
         </div>
         
         <div class= 'register-section'>
-            <a href="pages/register.php" class="btn-register">
+            <a href="pages/registrationPage.php" class="btn-register">
                 Request an Account.
             </a>
         </div>
