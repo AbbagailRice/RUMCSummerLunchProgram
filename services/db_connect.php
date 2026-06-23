@@ -25,8 +25,8 @@ try{
 }
 catch (PDOException $e) {
     //if it off wake up db
-    $api_token   = getenv('dXl/kVX5Xy7V');
-    $project     = getenv('abbagail-d4f5');
+    $api_token   = getenv('AIVEN_API_TOKEN');
+    $project     = getenv('AIVEN_PROJECT_NAME');
     $serviceName = "mysql-29bc9beb";
 
     if ($api_token && $project) { //check for good creds 

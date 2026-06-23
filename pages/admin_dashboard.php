@@ -52,11 +52,11 @@
         <div class="pending-container">
             <h3> Pending Volunteer Account Approvals</h3>
 
-            //check if there are none
+            <!--//check if there are none-->
             <?php if(empty($pending_users)): ?>
                 <p> No pending volunteers.<p>
             
-            //If there are.
+            <!--//If there are.-->
             <?php else: ?>
                 <table border="1">
                     <thead>
@@ -69,16 +69,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        // loop though each pending user and process them out.
+                        <!--// loop though each pending user and process them out.-->
                         <?php foreach ($pending_users as $user): ?>
                             <tr>
-                                //cleans and echos out the info
+                                <!--//cleans and echos out the info-->
                                 <td><?php echo htmlspecialchars($user['first_name'] . ' ' . $user['last_name']); ?></td>
                                 <td><?php echo htmlspecialchars($user['username']); ?></td>
                                 <td><?php echo htmlspecialchars($user['contact']); ?></td>
                                 <td><?php echo $user['has_keys'] == 1 ? 'Yes' : 'No'; ?></td> //looks at bool
                                 <td>
-                                    //active form for adding a new user only sends the id back to db
+                                    <!--//active form for adding a new user only sends the id back to db-->
                                     <form action="../services/approve_user.php" method="POST">
                                         <input type="hidden" name="volunteer_id" value="<?php echo $user['volunteer_id']; ?>">
                                         <button type="submit">Approve User</button>
