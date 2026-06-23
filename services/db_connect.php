@@ -58,22 +58,15 @@ catch (PDOException $e) {
         echo "<h2>System Action Notice:</h2>";
         echo "<p>The database was asleep. We are waking it up for you! Please refresh this page in 2-3 minutes.</p>";
         
-        echo "<hr>";
-        echo "<h3>Raw Aiven API Response Server Feedback:</h3>";
-        echo "<pre>" . htmlspecialchars($response) . "</pre>";
-        exit();
-
-        //debugging
-        if ($response && strpos($response, 'errors') !== false) {
-            die("Aiven API rejected request: " . $response);
-        }
+        //Debugging
+        //echo "<hr>";
+        //echo "<h3>Raw Aiven API Response Server Feedback:</h3>";
+        //echo "<pre>" . htmlspecialchars($response) . "</pre>";
+        //exit();
 
         //lt user know what is happening 
         die("The database was asleep. We are waking it up for you! Please refresh this page in 2-3 minutes.");
-        echo "";
 
-    }else {
-        die("Database connection failed, and Aiven credentials are missing from Render environment variables.");
     }
 }
 
