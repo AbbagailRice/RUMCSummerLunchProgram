@@ -28,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $insertStmt->execute([
                     'recipient_id'=> $recipient_id,
                     'attendance_date'=> $attendance_date,
-                    'status'=> $status
                 ]);
             } else {
                 // if this is hit again then unmark them (in case of acidiental)

@@ -95,13 +95,21 @@ try {
                                     foreach ($week_days as $day) {
                                         echo "<td class='cell-day-check'>";
                                         
-                                        //form for every day slot to mark status
+                                        // check if alray logged
+                                        $has_picked_up = isset($existing_pickups[$Row['recipient_id']]) && in_array($day['db_date'], $existing_pickups[$Row['recipient_id']]);
+                                        
+                                        // switch how it is displayed based on status.
+                                        if ($has_picked_up) {
+                                            $btn_text = "✓ Present"; //here
+                                        } else {
+                                            $btn_text = "[ &nbsp; ]"; // empty 
+                                        }
+                                        
                                         echo "<form action='../services/log_attendance.php' method='POST'>";
                                         echo "<input type='hidden' name='recipient_id' value='" . $Row['recipient_id'] . "'>";
                                         echo "<input type='hidden' name='attendance_date' value='" . $day['db_date'] . "'>";
                                         
-                                        // check button
-                                        echo "<button type='submit' name='status' value='Present'> ✓ Present</button>";
+                                        echo "<button type='submit' name='status' value='Present'>" . $btn_text . "</button>";
                                         
                                         echo "</form>";
                                         echo "</td>";
