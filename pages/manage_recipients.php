@@ -27,13 +27,9 @@ try {
 
        .modal-overlay {
             display: none; 
-            position: fixed;
-            top: 0; 
-            left: 0; 
+            position: fixed; 
             width: 100%; 
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 9999;
         }
 
         .modal-window {
@@ -165,7 +161,9 @@ try {
                                 echo "<td class='cell-fname'>" . htmlspecialchars($Row['first_name']) . "</td>";
                                 echo "<td class='cell-lname'>" . htmlspecialchars($Row['last_name']) . "</td>";
                                 echo "<td class='cell-age'>" . htmlspecialchars($Row['age']) . "</td>";
+                                echo "<td class='cell-allergies'>" . htmlspecialchars($Row['allergies']) . "</td>";
                                 echo "<td class='cell-guardian'>" . htmlspecialchars($Row['guardian_fname'] . " " . $Row['guardian_lname']) . "</td>";
+                                echo "<td class='cell-contact'>" . htmlspecialchars($Row['contact']) . "</td>";
                                 echo "<td class='cell-action'>";
                                 echo "<form action='../services/delete.php' method='POST' class='table-delete-form' onsubmit=\"return confirm('Are you sure you want to permanently delete this recipient?');\">";
                                 echo "<input type='hidden' name='recipient_id' value='" . $Row['recipient_id'] . "'>";

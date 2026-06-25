@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // check if the record existed and was deleted
             if ($stmt->rowCount() > 0) {
                 // successful, return to the workspace
-                header("Location: ../pages/delete_recipients.php?success=1");
+                header("Location: ../pages/manage_recipients.php?success=1");
                 exit();
             } else {
                 die("Error: Record not found in the system database.");
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("Error: Invalid recipient ID.");
     }
 } else {
-    header("Location: ../pages/delete_recipients.php");
+    header("Location: ../pages/manage_recipients.php");
     exit();
 }
 ?>
