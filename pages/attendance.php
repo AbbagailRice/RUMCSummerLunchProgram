@@ -21,13 +21,26 @@ for ($i = 0; $i < 5; $i++) {
 }
 //get data
 try {
-    $stmt = $pdo->prepare("select recipient_id, first_name, last_name, allergies,
+    $stmt = $pdo->prepare("select recipient_id, first_name, last_name, allergies
         from recipients order by last_name ASC, first_name ASC");
     $stmt->execute();
+
+    $start_week = $week_days[0]['db_date'];
+    $end_week   = $week_days[4]['db_date'];
+    $logStmt = $pdo->prepare("select recipient_id, attendance_date from attendance where attendance_date between :start_week and :end_week");
+    $logStmt->execute(['start_week' => $start_week, 'end_week' => $end_week]);
+    
+    //look for already there kids
+    $existing_pickups = [];
+    while ($log = $logStmt->fetch(PDO::FETCH_ASSOC)) {
+        $existing_pickups[$log['recipient_id']][] = $log['attendance_date'];
+    }
+
 } catch (PDOException $e) {
     $error_msg = "Could not load data.";
 }
 ?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -78,7 +91,7 @@ try {
                                     echo "<td class='cell-fname'>" . htmlspecialchars($Row['first_name']) . "</td>";
                                     echo "<td class='cell-allergies'>" . htmlspecialchars($Row['allergies'] ?? 'None') . "</td>";
                                     
-                                    //go through each day to get the traker box
+                                    //go through each day to get the tracker box
                                     foreach ($week_days as $day) {
                                         echo "<td class='cell-day-check'>";
                                         
