@@ -7,12 +7,48 @@ if(!isset($_SESSION['volunteer_id'])){
     exit();
 }
 require_once '../services/db_connect.php';
-
+//init so if try fails it doesnt error
+$stmt = null;
+$error_msg = null;
 ?>
 <!DOCTYPE HTML>
 <html>
 <head>
     <title> Manage Recipients</title>
+    <!-- style to be moved later-->
+     <style>
+
+       .modal-overlay {
+            display: none; 
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+
+        .modal-window {
+            background: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            width: 450px;
+            position: relative;
+            border: 1px solid #333;
+        }
+
+        .modal-window.extended-width {
+            width: 700px;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 <div class="layout">
