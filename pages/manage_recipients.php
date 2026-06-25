@@ -96,27 +96,42 @@ try {
             <h3 class="modal-title">Add New Recipient</h3>
             
             <form action="../services/register_recipient.php" method="POST" class="modal-form">
-                <div class="form-group">
-                    <label class="form-label">First Name:</label>
-                    <input type="text" name="first_name" class="form-input" required>
+                <div class ="form-options">
+                    <label>Recipient First Name *</label><br>
+                    <input type="text" name="first_name" required>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Last Name:</label>
-                    <input type="text" name="last_name" class="form-input" required>
+                <br>
+                <div class ="form-options">
+                    <label>Recipient Last Name *</label><br>
+                    <input type="text" name="last_name" required>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Age:</label>
-                    <input type="number" name="age" class="form-input" required>
+                <br>
+                <div class ="form-options">
+                    <label>Age *</label><br>
+                    <input type="number" name="age" required>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Guardian First Name:</label>
-                    <input type="text" name="guardian_fname" class="form-input" required>
+                <br>
+                <div class ="form-options">
+                    <label>Guardian First Name (Optional)</label><br>
+                    <input type="text" name="guardian_fname">
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Guardian Last Name:</label>
-                    <input type="text" name="guardian_lname" class="form-input" required>
+                <br>
+                <div class ="form-options">
+                    <label>Guardian Last Name (Optional)</label><br>
+                    <input type="text" name="guardian_lname">
                 </div>
-                <button type="submit" class="form-submit-btn">Submit Registration</button>
+                <br>
+                <div class ="form-options">
+                    <label>Contact Phone *</label><br>
+                    <input type="text" name="contact" required>
+                </div>
+                <br>
+                <div class ="form-options">
+                    <label>Allergies </label><br>
+                    <textarea name="allergies" rows="3" cols="30" placeholder="List any food allergies..."></textarea>
+                </div>
+                <br>
+                <button type="submit">Submit Registration</button>
             </form>
         </div>
     </div>
