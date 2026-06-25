@@ -11,7 +11,8 @@ require_once '../services/db_connect.php';
 $stmt = null;
 $error_msg = null;
 try {
-    $stmt = $pdo->prepare("select recipient_id, first_name, last_name, age, guardian_fname, guardian_lname from recipients order by last_name ASC, first_name ASC");
+    $stmt = $pdo->prepare("select recipient_id, first_name, last_name, age, guardian_fname, 
+        guardian_lname, allergies, contact from recipients order by last_name ASC, first_name ASC");
     $stmt->execute();
 } catch (PDOException $e) {
     $error_msg = "Could not load data.";
@@ -35,11 +36,12 @@ try {
         .modal-window {
             background: #fff;
             position: fixed;
-            top: 50%;
+            top: 25%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 500px; 
-            height: 400px;
+            height: 600px;
+            overflow-y: auto;
             padding: 20px;
             border: 1px solid #333;
         }
@@ -160,15 +162,21 @@ try {
                     <?php 
                         if ($stmt) {//everything a echo! no switching sucjkhjbfwije
                             while ($Row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                //fill guardian name if empty 
+                                $g_fname  = $Row['guardian_fname'] ?? '';
+                                $g_lname  = $Row['guardian_lname'] ?? '';
+                                $guardian = trim($g_fname . " " . $g_lname);
+                                if ($guardian === '') { $guardian = "<em>None listed</em>"; }
+
                                 echo "<tr class='table-row'>";
                                 echo "<td class='cell-fname'>" . htmlspecialchars($Row['first_name']) . "</td>";
                                 echo "<td class='cell-lname'>" . htmlspecialchars($Row['last_name']) . "</td>";
                                 echo "<td class='cell-age'>" . htmlspecialchars($Row['age']) . "</td>";
                                 echo "<td class='cell-allergies'>" . htmlspecialchars($Row['allergies'] ?? '') . "</td>";
-                                echo "<td class='cell-guardian'>" . htmlspecialchars($Row['guardian_fname'] . " " . $Row['guardian_lname']) . "</td>";
+                                echo "<td class='cell-guardian'>" . $guardian . "</td>";
                                 echo "<td class='cell-contact'>" . htmlspecialchars($Row['contact']) . "</td>";
                                 echo "<td class='cell-action'>";
-                                echo "<form action='../services/delete.php' method='POST' class='table-delete-form' onsubmit=\"return confirm('Are you sure you want to permanently delete this recipient?');\">";
+                                echo "<form action='../services/delete.php' method='POST' class='table-delete-form' onsubmit=\"return confirm('Confirm Delete?');\">";
                                 echo "<input type='hidden' name='recipient_id' value='" . $Row['recipient_id'] . "'>";
                                 echo "<button type='submit' class='table-delete-btn'>Delete</button>";
                                 echo "</form>";
