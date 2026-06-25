@@ -10,6 +10,13 @@ require_once '../services/db_connect.php';
 //init so if try fails it doesnt error
 $stmt = null;
 $error_msg = null;
+try {
+    $stmt = $pdo->prepare("select recipient_id, first_name, last_name, age, guardian_fname, guardian_lname from recipients order by last_name ASC, first_name ASC");
+    $stmt->execute();
+} catch (PDOException $e) {
+    $error_msg = "Could not load data.";
+}
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -38,15 +45,10 @@ $error_msg = null;
             border: 1px solid #333;
         }
 
-        .modal-window.extended-width {
-            width: 700px;
-        }
-
         .modal-close-btn {
             position: absolute;
             right: 15px;
             top: 10px;
-            cursor: pointer;
         }
     </style>
 </head>
@@ -59,21 +61,21 @@ $error_msg = null;
                 
                 <div class="recipient-actions-grid">
                     
-                    <button class="action-btn-trigger" data-target="addModal">
+                    <button type="button" class="action-btn-trigger" data-target="addModal">
                         <div class="action-item-box">
                             <span class="action-icon">+</span><br>
                             <span class="action-label">Add Recipient</span>
                         </div>
                     </button>
                     
-                    <button class="action-btn-trigger" data-target="deleteModal">
+                    <button type="button" class="action-btn-trigger" data-target="deleteModal">
                         <div class="action-item-box">
                             <span class="action-icon">-</span><br>
                             <span class="action-label">Delete Recipient</span>
                         </div>
                     </button>
                     
-                    <button class="action-btn-trigger" data-target="editModal">
+                    <button type="button" class="action-btn-trigger" data-target="editModal">
                         <div class="action-item-box">
                             <span class="action-icon">EDIT</span><br>
                             <span class="action-label">Edit/View Recipient</span>
@@ -88,11 +90,9 @@ $error_msg = null;
         <?php include '../includes/sidebar.php'; ?>
     </div>
 
-   <!--modal overlays for add/remove and delete-->
-   <!-- ADD-->
-    <div id="addModal" class="modal-overlay">
+   <div id="addModal" class="modal-overlay">
         <div class="modal-window">
-            <button class="modal-close-btn">&times;</button>
+            <button type="button" class="modal-close-btn">&times;</button>
             <h3 class="modal-title">Add New Recipient</h3>
             
             <form action="../services/register_recipient.php" method="POST" class="modal-form">
@@ -121,10 +121,9 @@ $error_msg = null;
         </div>
     </div>
 
-    <!-- Delete-->
     <div id="deleteModal" class="modal-overlay">
         <div class="modal-window extended-width">
-            <button class="modal-close-btn">&times;</button>
+            <button type="button" class="modal-close-btn">&times;</button>
             <h3 class="modal-title">Remove Recipient</h3>
             
             <?php 
@@ -145,20 +144,21 @@ $error_msg = null;
                 </thead>
                 <tbody>
                     <?php 
-                        // pull from database row-by-row
-                        while ($Row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                            echo "<tr class='table-row'>";
-                            echo "<td class='cell-fname'>" . htmlspecialchars($Row['first_name']) . "</td>";
-                            echo "<td class='cell-lname'>" . htmlspecialchars($Row['last_name']) . "</td>";
-                            echo "<td class='cell-age'>" . htmlspecialchars($Row['age']) . "</td>";
-                            echo "<td class='cell-guardian'>" . htmlspecialchars($Row['guardian_fname'] . " " . $Row['guardian_lname']) . "</td>";
-                            echo "<td class='cell-action'>";
-                            echo "<form action='../services/delete.php' method='POST' class='table-delete-form' onsubmit=\"return confirm('Are you sure you want to permanently delete this recipient?');\">";
-                            echo "<input type='hidden' name='recipient_id' value='" . $Row['recipient_id'] . "'>";
-                            echo "<button type='submit' class='table-delete-btn'>Delete</button>";
-                            echo "</form>";
-                            echo "</td>";
-                            echo "</tr>";
+                        if ($stmt) {
+                            while ($Row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                echo "<tr class='table-row'>";
+                                echo "<td class='cell-fname'>" . htmlspecialchars($Row['first_name']) . "</td>";
+                                echo "<td class='cell-lname'>" . htmlspecialchars($Row['last_name']) . "</td>";
+                                echo "<td class='cell-age'>" . htmlspecialchars($Row['age']) . "</td>";
+                                echo "<td class='cell-guardian'>" . htmlspecialchars($Row['guardian_fname'] . " " . $Row['guardian_lname']) . "</td>";
+                                echo "<td class='cell-action'>";
+                                echo "<form action='../services/delete.php' method='POST' class='table-delete-form' onsubmit=\"return confirm('Are you sure you want to permanently delete this recipient?');\">";
+                                echo "<input type='hidden' name='recipient_id' value='" . $Row['recipient_id'] . "'>";
+                                echo "<button type='submit' class='table-delete-btn'>Delete</button>";
+                                echo "</form>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }
                         }
                     ?>
                 </tbody>
@@ -166,18 +166,16 @@ $error_msg = null;
         </div>
     </div>
 
-    <!-- EDIT-->
     <div id="editModal" class="modal-overlay">
         <div class="modal-window">
-            <button class="modal-close-btn">&times;</button>
+            <button type="button" class="modal-close-btn">&times;</button>
             <h3 class="modal-title">Edit / View Recipient</h3>
-            <p class="placeholder-text">Edit functionality coming soon...</p>
+            <p class="placeholder-text">Edit coming soon...</p>
         </div>
     </div>
 
-    <!--JS scripting for the modals-->
     <script>
-        // Open modal on click based on the thing clicked
+        //open modal on click based on the thing clicked
         document.querySelectorAll('.action-btn-trigger').forEach(button => {
             button.addEventListener('click', () => {
                 const targetId = button.getAttribute('data-target');
@@ -185,14 +183,14 @@ $error_msg = null;
             });
         });
 
-        // close  when clicking the close button
+        //close  when clicking the close button
         document.querySelectorAll('.modal-close-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.target.closest('.modal-overlay').style.display = 'none';
             });
         });
 
-        // close  when clicking outside the main window box
+        //close  when clicking outside the main window box
         window.addEventListener('click', (e) => {
             if (e.target.classList.contains('modal-overlay')) {
                 e.target.style.display = 'none';
