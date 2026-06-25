@@ -15,37 +15,34 @@ require_once '../services/db_connect.php';
     <title> Manage Recipients</title>
 </head>
 <body>
-
-    <div class="layout">
-
+<div class="layout">
         <main class="main-content">
-
             <?php include '../includes/header.php'; ?>
 
             <div class="workspace-container">
                 
                 <div class="recipient-actions-grid">
                     
-                    <a href="add_recipients.php" class="action-link-wrapper">
+                    <button class="action-btn-trigger" data-target="addModal">
                         <div class="action-item-box">
                             <span class="action-icon">+</span><br>
-                            <span>Add Recipient</span>
+                            <span class="action-label">Add Recipient</span>
                         </div>
-                    </a>
+                    </button>
                     
-                    <a href="delete_recipients.php" class="action-link-wrapper">
+                    <button class="action-btn-trigger" data-target="deleteModal">
                         <div class="action-item-box">
                             <span class="action-icon">-</span><br>
-                            <span>Delete Recipient</span>
+                            <span class="action-label">Delete Recipient</span>
                         </div>
-                    </a>
+                    </button>
                     
-                    <a href="edit_recipients.php" class="action-link-wrapper">
+                    <button class="action-btn-trigger" data-target="editModal">
                         <div class="action-item-box">
                             <span class="action-icon">EDIT</span><br>
-                            <span>Edit/View Recipient</span>
+                            <span class="action-label">Edit/View Recipient</span>
                         </div>
-                    </a>
+                    </button>
                     
                 </div>
 
@@ -53,8 +50,119 @@ require_once '../services/db_connect.php';
         </main>
 
         <?php include '../includes/sidebar.php'; ?>
-
     </div>
+
+   <!--modal overlays for add/remove and delete-->
+   <!-- ADD-->
+    <div id="addModal" class="modal-overlay">
+        <div class="modal-window">
+            <button class="modal-close-btn">&times;</button>
+            <h3 class="modal-title">Add New Recipient</h3>
+            
+            <form action="../services/register_recipient.php" method="POST" class="modal-form">
+                <div class="form-group">
+                    <label class="form-label">First Name:</label>
+                    <input type="text" name="first_name" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Last Name:</label>
+                    <input type="text" name="last_name" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Age:</label>
+                    <input type="number" name="age" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Guardian First Name:</label>
+                    <input type="text" name="guardian_fname" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Guardian Last Name:</label>
+                    <input type="text" name="guardian_lname" class="form-input" required>
+                </div>
+                <button type="submit" class="form-submit-btn">Submit Registration</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete-->
+    <div id="deleteModal" class="modal-overlay">
+        <div class="modal-window extended-width">
+            <button class="modal-close-btn">&times;</button>
+            <h3 class="modal-title">Remove Recipient</h3>
+            
+            <?php 
+                if (isset($error_msg)) {
+                    echo "<p class='error-message'>" . $error_msg . "</p>";
+                }
+            ?>
+
+            <table class="recipient-display-table" border="1">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Age</th>
+                        <th>Primary Guardian</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        // pull from database row-by-row
+                        while ($Row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            echo "<tr class='table-row'>";
+                            echo "<td class='cell-fname'>" . htmlspecialchars($Row['first_name']) . "</td>";
+                            echo "<td class='cell-lname'>" . htmlspecialchars($Row['last_name']) . "</td>";
+                            echo "<td class='cell-age'>" . htmlspecialchars($Row['age']) . "</td>";
+                            echo "<td class='cell-guardian'>" . htmlspecialchars($Row['guardian_fname'] . " " . $Row['guardian_lname']) . "</td>";
+                            echo "<td class='cell-action'>";
+                            echo "<form action='../services/delete.php' method='POST' class='table-delete-form' onsubmit=\"return confirm('Are you sure you want to permanently delete this recipient?');\">";
+                            echo "<input type='hidden' name='recipient_id' value='" . $Row['recipient_id'] . "'>";
+                            echo "<button type='submit' class='table-delete-btn'>Delete</button>";
+                            echo "</form>";
+                            echo "</td>";
+                            echo "</tr>";
+                        }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- EDIT-->
+    <div id="editModal" class="modal-overlay">
+        <div class="modal-window">
+            <button class="modal-close-btn">&times;</button>
+            <h3 class="modal-title">Edit / View Recipient</h3>
+            <p class="placeholder-text">Edit functionality coming soon...</p>
+        </div>
+    </div>
+
+    <!--JS scripting for the modals-->
+    <script>
+        // Open modal on click based on the thing clicked
+        document.querySelectorAll('.action-btn-trigger').forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-target');
+                document.getElementById(targetId).style.display = 'block';
+            });
+        });
+
+        // close  when clicking the close button
+        document.querySelectorAll('.modal-close-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.target.closest('.modal-overlay').style.display = 'none';
+            });
+        });
+
+        // close  when clicking outside the main window box
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-overlay')) {
+                e.target.style.display = 'none';
+            }
+        });
+    </script>
 
 </body>
 </html>

@@ -16,7 +16,7 @@
             try{
 
                 //check for duplicates then send back if there is.
-                $check_stmt = $pdo->prepare("SELECT volunteer_id FROM volunteers WHERE username = :username LIMIT 1");
+                $check_stmt = $pdo->prepare("selct volunteer_id from volunteers where username = :username limit 1");
                 $check_stmt->execute(['username' => $username]);
                 
                 if ($check_stmt->fetch()) {
@@ -26,8 +26,8 @@
                 //hash the password
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
                 //insert everthing
-                $insert_sql = "INSERT INTO volunteers (first_name, last_name, contact, username, password, has_keys, is_approved, is_admin) 
-                    VALUES (:first_name, :last_name, :contact, :username, :password, :has_keys, :is_approved, :is_admin)";
+                $insert_sql = "insert into volunteers (first_name, last_name, contact, username, password, has_keys, is_approved, is_admin) 
+                    values (:first_name, :last_name, :contact, :username, :password, :has_keys, :is_approved, :is_admin)";
             
                 $insert_stmt = $pdo->prepare($insert_sql);
                 $insert_stmt->execute([
@@ -43,7 +43,7 @@
                 ]);
                 echo "Account request submitted. Please wait for an administrator to verify your account.";
                 echo "<br><a href='../index.php'>Return to Login Screen</a>";
-                
+
             } catch (PDOException $e) {
                 // if there is an issue.
                 echo "An error occurred while processing your registration request.";

@@ -9,7 +9,7 @@ if (!isset($_SESSION['volunteer_id'])) {
 require_once '../services/db_connect.php';
 //get the data form db
 try {
-    $stmt = $pdo->prepare("SELECT recipient_id, first_name, last_name, age, guardian_fname, guardian_lname FROM recipients ORDER BY last_name ASC, first_name ASC");
+    $stmt = $pdo->prepare("select recipient_id, first_name, last_name, age, guardian_fname, guardian_lname from recipients order by last_name ASC, first_name ASC");
     $stmt->execute();
 } catch (PDOException $e) {
     $recipients = [];
@@ -35,8 +35,8 @@ try {
                 <div class="recipient-delete">
                     <h3>Remove Recipient</h3>
 
-                    //if any errors show what it is
                     <?php 
+                        //if any errors show what it is
                         if (isset($error_msg)){
                             echo "<p>" . $error_msg . "</p>";
                         }else if (empty($recipients)){
