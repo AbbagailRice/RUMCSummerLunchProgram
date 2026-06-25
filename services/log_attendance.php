@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             if ($checkStmt->fetchColumn() == 0) {
                 // log if they are not
-                $insertStmt = $pdo->prepare("insert into attendance (recipient_id, attendance_date, status) values (:recipient_id, :attendance_date, :status)");
+                $insertStmt = $pdo->prepare("insert into attendance (recipient_id, attendance_date) values (:recipient_id, :attendance_date)");
                 $insertStmt->execute([
                     'recipient_id'=> $recipient_id,
                     'attendance_date'=> $attendance_date,
