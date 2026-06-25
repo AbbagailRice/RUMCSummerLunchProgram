@@ -35,16 +35,7 @@
     <title>SLP Admin Dashboard</title>
 </head>
 <body>
-    <div class="background-image">
-        <!-- <img src="photos/logo.png" alt="background"> -->
-    </div>
-
-    <div class="logo-header">
-        <div class="logo">
-            <!-- <img src="photos/logo.png" alt="Logo"> -->
-        </div>
-        <h1>Summer Lunch <br> Program</h1>
-    </div>
+    <?php include '../includes/header.php'; ?>
     
     <div class="admin-container">
         <h2> ADMIN</h2>
@@ -54,7 +45,7 @@
 
             <!--//check if there are none-->
             <?php if(empty($pending_users)): ?>
-                <p> No pending volunteers.<p>
+                <p> No pending volunteers.</p>
             
             <!--//If there are.-->
             <?php else: ?>
@@ -76,7 +67,7 @@
                                 <td><?php echo htmlspecialchars($user['first_name'] . ' ' . $user['last_name']); ?></td>
                                 <td><?php echo htmlspecialchars($user['username']); ?></td>
                                 <td><?php echo htmlspecialchars($user['contact']); ?></td>
-                                <td><?php echo $user['has_keys'] == 1 ? 'Yes' : 'No'; ?></td> //looks at bool
+                                <td><?php echo $user['has_keys'] == 1 ? 'Yes' : 'No'; ?></td> <!--looks at bool-->
                                 <td>
                                     <!--//active form for adding a new user only sends the id back to db-->
                                     <form action="../services/approve_user.php" method="POST">

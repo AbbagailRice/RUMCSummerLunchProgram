@@ -56,7 +56,6 @@ catch (PDOException $e) {
         curl_close($ch); //shut down connection when done
         
         echo "<h2>System Action Notice:</h2>";
-        echo "<p>The database was asleep. We are waking it up for you! Please refresh this page in 2-3 minutes.</p>";
         
         //Debugging
         //echo "<hr>";
