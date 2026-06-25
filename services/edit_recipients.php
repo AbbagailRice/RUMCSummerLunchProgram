@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } catch (PDOException $e) {//error to change
             die("Error: Failed to save recipient changes.");
         }
-    } else {//misisng fields if somthing is being made empty
+    } else {//misisng fields if somthing is being made empty tecnicaly shouldnt hit this ever.
         die("Error: Required information fields are missing.");
     }
 } else { 

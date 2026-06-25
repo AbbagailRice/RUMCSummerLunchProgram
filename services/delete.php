@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($recipient_id > 0) {
         try {
             // delete
-            $sqlString = "DELETE FROM recipients WHERE recipient_id = :recipient_id";
+            $sqlString = "delete from recipients where recipient_id = :recipient_id";
             $stmt = $pdo->prepare($sqlString);
             $stmt->execute(['recipient_id' => $recipient_id]);
 

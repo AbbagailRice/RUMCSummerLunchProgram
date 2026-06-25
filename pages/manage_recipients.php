@@ -100,6 +100,7 @@ try {
                                 <th>Allergies</th>
                                 <th>Primary Guardian</th>
                                 <th>Contact Info</th> 
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -123,7 +124,7 @@ try {
                                         echo "<td class='cell-guardian'>" . $guardian . "</td>";
                                         echo "<td class='cell-contact'>" . htmlspecialchars($Row['contact'] ?? '') . "</td>";
                                         
-                                        // FIXED: Added row Action button to feed data straight to your openEditModal function
+                                        //edit button
                                         echo "<td class='cell-action'>";
                                         echo "<button type='button' onclick='openEditModal(" . json_encode($Row) . ")'>Edit</button>";
                                         echo "</td>";
@@ -230,6 +231,7 @@ try {
                             echo "<td class='cell-action'>";
                             echo "<form action='../services/delete.php' method='POST' class='table-delete-form' onsubmit=\"return confirm('Confirm Delete?');\">";
                             echo "<input type='hidden' name='recipient_id' value='" . $Row['recipient_id'] . "'>";
+                            //submit
                             echo "<button type='submit' class='table-delete-btn'>Delete</button>";
                             echo "</form>";
                             echo "</td>";

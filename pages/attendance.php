@@ -1,0 +1,117 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['volunteer_id'])) {
+    header("Location: ../index.php");
+    exit();
+}
+
+require_once '../services/db_connect.php';
+//this is for getting the dates for m-f of the current week
+
+$monday_time = strtotime('monday this week');
+$week_days = [];
+for ($i = 0; $i < 5; $i++) {
+    //stores as YYYY-MM-DD for the db and Mon 06/25 for layout
+    $timestamp = strtotime("+$i days", $monday_time);
+    $week_days[$i] = [
+        'db_date'      => date('Y-m-d', $timestamp),
+        'display_date' => date('D m/d', $timestamp)
+    ];
+}
+//get data
+try {
+    $stmt = $pdo->prepare("select recipient_id, first_name, last_name, allergies,
+        from recipients order by last_name ASC, first_name ASC");
+    $stmt->execute();
+} catch (PDOException $e) {
+    $error_msg = "Could not load data.";
+}
+?>
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Attendance Tracking</title>
+</head>
+<body>
+
+    <div class="layout">
+        <main class="main-content">
+            <?php include '../includes/header.php'; ?>
+
+            <div class="workspace-container">
+                
+                <div class="attendance-workspace">
+                    <h3>Weekly Attendance</h3>
+
+                    <?php 
+                        if (isset($_GET['success'])) {// if good
+                            echo "<p>Attendance saved.</p>";
+                        }
+
+                        if (isset($error_msg)){//if any error
+                            echo "<p>" . $error_msg . "</p>";
+                        } else if ($stmt->rowCount() == 0){//if noone there
+                            echo "<p>No recipients registered in the system yet.</p>";
+                        } else {
+                    ?>
+                    
+                    <table class="attendance-table" border="1">
+                        <thead>
+                            <tr>
+                                <th>Last Name</th>
+                                <th>First Name</th>
+                                <th>Allergies</th>
+                                <?php 
+                                    //dates for the current week
+                                    foreach ($week_days as $day) {
+                                        echo "<th>" . $day['display_date'] . "</th>";
+                                    }
+                                ?>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                                while ($Row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                    echo "<tr class='attendance-row'>";
+                                    echo "<td class='cell-lname'>" . htmlspecialchars($Row['last_name']) . "</td>";
+                                    echo "<td class='cell-fname'>" . htmlspecialchars($Row['first_name']) . "</td>";
+                                    echo "<td class='cell-allergies'>" . htmlspecialchars($Row['allergies'] ?? 'None') . "</td>";
+                                    
+                                    //go through each day to get the traker box
+                                    foreach ($week_days as $day) {
+                                        echo "<td class='cell-day-check'>";
+                                        
+                                        //form for every day slot to mark status
+                                        echo "<form action='../services/log_attendance.php' method='POST'>";
+                                        echo "<input type='hidden' name='recipient_id' value='" . $Row['recipient_id'] . "'>";
+                                        echo "<input type='hidden' name='attendance_date' value='" . $day['db_date'] . "'>";
+                                        
+                                        // check button
+                                        echo "<button type='submit' name='status' value='Present'> ✓ Present</button>";
+                                        
+                                        echo "</form>";
+                                        echo "</td>";
+                                    }
+                                    echo "</tr>";
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                    
+                    <?php 
+                        } //close else
+                    ?>
+                                
+                </div>
+
+            </div>
+        </main>
+
+        <?php include '../includes/sidebar.php'; ?>
+
+    </div>
+
+</body>
+</html>
+
