@@ -34,10 +34,12 @@ try {
 
         .modal-window {
             background: #fff;
-            margin: 15% auto;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
             padding: 20px;
-            width: 450px;
-            position: relative;
             border: 1px solid #333;
         }
 
