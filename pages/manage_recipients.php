@@ -38,7 +38,8 @@ try {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 500px;
+            width: 500px; 
+            height: 400px;
             padding: 20px;
             border: 1px solid #333;
         }
@@ -157,13 +158,13 @@ try {
                 </thead>
                 <tbody>
                     <?php 
-                        if ($stmt) {
+                        if ($stmt) {//everything a echo! no switching sucjkhjbfwije
                             while ($Row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                 echo "<tr class='table-row'>";
                                 echo "<td class='cell-fname'>" . htmlspecialchars($Row['first_name']) . "</td>";
                                 echo "<td class='cell-lname'>" . htmlspecialchars($Row['last_name']) . "</td>";
                                 echo "<td class='cell-age'>" . htmlspecialchars($Row['age']) . "</td>";
-                                echo "<td class='cell-allergies'>" . htmlspecialchars($Row['allergies']) . "</td>";
+                                echo "<td class='cell-allergies'>" . htmlspecialchars($Row['allergies'] ?? '') . "</td>";
                                 echo "<td class='cell-guardian'>" . htmlspecialchars($Row['guardian_fname'] . " " . $Row['guardian_lname']) . "</td>";
                                 echo "<td class='cell-contact'>" . htmlspecialchars($Row['contact']) . "</td>";
                                 echo "<td class='cell-action'>";
@@ -193,8 +194,14 @@ try {
         //open modal on click based on the thing clicked
         document.querySelectorAll('.action-btn-trigger').forEach(button => {
             button.addEventListener('click', () => {
-                const targetId = button.getAttribute('data-target');
-                document.getElementById(targetId).style.display = 'block';
+                //close any open
+                document.querySelectorAll('.modal-overlay').forEach(modal => {
+                modal.style.display = 'none';
+            });
+
+            //open new one
+            const targetId = button.getAttribute('data-target');
+            document.getElementById(targetId).style.display = 'block';
             });
         });
 
