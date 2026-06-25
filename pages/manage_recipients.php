@@ -154,7 +154,9 @@ try {
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Age</th>
+                        <th>Allergies</th>
                         <th>Primary Guardian</th>
+                        <th>Contact Info</th> 
                         <th>Action</th>
                     </tr>
                 </thead>
