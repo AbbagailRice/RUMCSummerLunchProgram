@@ -76,13 +76,6 @@ try {
                         </div>
                     </button>
                     
-                    <button type="button" class="action-btn-trigger" data-target="editModal">
-                        <div class="action-item-box">
-                            <span class="action-icon">EDIT</span><br>
-                            <span class="action-label">Edit/View Recipient</span>
-                        </div>
-                    </button>
-                    
                 </div>
                 
                 <div class="search-container">
@@ -253,7 +246,7 @@ try {
             <button type="button" class="modal-close-btn">&times;</button>
             <h3 class="modal-title">Edit Recipient Information</h3>
             
-            <form action="../services/edit_recipient.php" method="POST" class="modal-form">
+            <form action="../services/edit_recipients.php" method="POST" class="modal-form">
                 <input type="hidden" name="recipient_id" id="edit_id">
 
                 <div class ="form-options">
