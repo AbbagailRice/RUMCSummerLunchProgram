@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <?php include '../includes/header.php'; ?>
+    <?php include '/includes/header.php'; ?>
 
     <div class="auth-card">
         

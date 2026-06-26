@@ -30,7 +30,7 @@
             z-index: -2; /* go to back*/
             background-image: 
             linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), 
-                url('../photos/background.jpg');
+                url('../photos/background2.jpg');
             background-size: cover; /* scale to size*/
             background-position: center; /* keeps center even if cropped*/
             background-repeat: no-repeat;
