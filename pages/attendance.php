@@ -58,10 +58,6 @@ try {
                     <h3>Weekly Attendance</h3>
 
                     <?php 
-                        if (isset($_GET['success'])) {// if good
-                            echo "<p>Attendance saved.</p>";
-                        }
-
                         if (isset($error_msg)){//if any error
                             echo "<p>" . $error_msg . "</p>";
                         } else if ($stmt->rowCount() == 0){//if noone there
