@@ -26,7 +26,7 @@
             position: fixed; /* layout rule  */
             top: 0;
             right: 0; /* set it to right fixed*/
-            width: 120px;
+            width: 100px;
             height: 100vh; /* top to bottom*/
             background-color: var(--color-primary-scarlet);
             
@@ -45,7 +45,6 @@
             text-align: center;
             text-decoration: none;  /* no weird line under when clicked */
             color: var(--color-cotton-rose);
-            font-size: 0.85rem;
             font-weight: bold;
             max-width: 100px; /* Safe padding buffer width text wrapping constraint */
             word-wrap: break-word; /*brak word if it is to long for sidebar*/
@@ -54,7 +53,7 @@
         /* icons */
         .nav-icon {
             display: inline-block;
-            font-size: 2.2rem; /*sizing*/
+            font-size: 2.4rem; /*sizing*/
             margin-bottom: 5px; /* spacing*/
             color: var(--color-cotton-rose);
         }

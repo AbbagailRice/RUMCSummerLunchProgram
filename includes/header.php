@@ -4,6 +4,23 @@
 <head>
     <title> Header Styling </title>
     <style>
+        :root {
+            /* base colors */
+            --color-black: #000000;
+            --color-dim-grey: #5d6769;
+            --color-white: #ffffff;
+            
+            /* lights */
+            --color-pale-sky: #bfd7ea;
+            --color-dry-sage: #b6c69d;
+            
+            /* reds and pinks */
+            --color-cotton-rose: #fdd1d3;
+            --color-cotton-candy: #fda6a9;
+            --color-vibrant-coral: #ff5a5f;
+            --color-primary-scarlet: #e50027;
+        }
+
         .background-image {
             position: fixed;/* dont move*/
             top: 0;
@@ -12,8 +29,8 @@
             height: 100vh;
             z-index: -2; /* go to back*/
             background-image: 
-            linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)), /* dim*/
-            url('../photos/background.jpg');
+            linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), 
+                url('../photos/background.jpg');
             background-size: cover; /* scale to size*/
             background-position: center; /* keeps center even if cropped*/
             background-repeat: no-repeat;
@@ -22,8 +39,8 @@
 
         .logo-header {
             position: absolute;
-            top: 40px;
-            left: 40px;
+            top: 20px;
+            left: 20px;
             display: flex;
             align-items: center; /* vertical align */
             gap: 15px; /* spacing */
@@ -50,7 +67,6 @@
 
     <!-- This handles logo and background-->
     <div class="background-image">
-            <img src="../photos/background.jpg" alt="background">
     </div>
 
     <div class="logo-header">

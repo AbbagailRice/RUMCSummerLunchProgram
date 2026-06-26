@@ -8,16 +8,7 @@
 </head>
 
 <body>
-    <div class="background-image">
-        <!-- <img src="photos/logo.png" alt="background"> -->
-    </div>
-
-    <div class="logo-header">
-        <div class="logo">
-            <!-- <img src="photos/logo.png" alt="Logo"> -->
-        </div>
-        <h1>Summer Lunch <br> Program</h1>
-    </div>
+    <?php include '../includes/header.php'; ?>
 
     <div class="auth-card">
         
