@@ -25,15 +25,15 @@
         <div class="main-content">
 
             <div class ="workspace-container">
+                <div class ="dashboard-workspace">
+                    <h2>Welcome to the Dashboard!</h2>
 
-                <h2>Welcome to the Dashboard!</h2>
+                    <p>This is the dashboard page.</p>
 
-                <p>This is the dashboard page.</p>
-
-                <a href="../services/logout.php" class="btn-logout">
-                    Logout
-                </a>
-
+                    <a href="../services/logout.php" class="btn-logout">
+                        Logout
+                    </a>
+                </div>
             </div>
         </div>
 
