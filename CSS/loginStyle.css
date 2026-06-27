@@ -31,7 +31,7 @@
     background-color: var(--color-white);
     width: 400px;
     padding: 60px 40px;
-    border-radius: 4px; /* round corners */
+    border-radius: 8px; /* round corners */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* yknow i need me shadows! */
     display: flex;
     flex-direction: column;
@@ -40,21 +40,29 @@
 
 }
 
-.btn {
+.login-section input[type="submit"],
+.btn-register {
+    display: block;
     width: 100%;
     padding: 16px;
     border: none;
     border-radius: 4px;
     font-size: 1rem;
     font-weight: 700;
+
+    text-align: center;
+    text-decoration: none;
+
+    box-sizing: border-box;
+    transition: background-color 0.2s ease;
 }
 
-.btn-login-section {
+.login-section input[type="submit"] {
     background-color: var(--color-primary-scarlet);
     color: var(--color-white);
 }
 
-.btn-login-section:hover {
+.login-section input[type="submit"]:hover {
     background-color: #c70020;
 }
 
