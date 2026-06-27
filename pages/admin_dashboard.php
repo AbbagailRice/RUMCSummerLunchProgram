@@ -38,7 +38,7 @@
 </head>
 <body>
 <div class="layout">
-    <div class= "main-contnent">
+    <div class= "main-content">
         <?php include '../includes/header.php'; ?>
         
         <div class="admin-container">
@@ -91,6 +91,7 @@
             <a href="../services/logout.php">Logout</a>
         </div>
     </div>
+    <?php include '../includes/sidebar.php'; ?>
 </div>
 </body>
 </html>

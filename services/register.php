@@ -40,9 +40,11 @@
                     'is_approved' => 0, //false till admin aproves.
                     'is_admin'    => 0
 
-                ]);
-                echo "Account request submitted. Please wait for an administrator to verify your account.";
-                echo "<br><a href='../index.php'>Return to Login Screen</a>";
+                ]);// inline style for completion it is what it is 
+                echo "<div style='font-family: Arial, sans-serif; max-width: 500px; margin: 60px auto; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; border-top: 5px solid #e50027;'>";
+                    echo "<p style='color: #5d6769; font-size: 1rem; line-height: 1.5; margin-bottom: 20px; font-weight: 500;'>Account request submitted. Please wait for an administrator to verify your account.</p>";
+                    echo "<a href='../index.php' style='display: inline-block; color: #e50027; text-decoration: none; font-weight: bold; font-size: 0.95rem; padding: 8px 16px; border: 1px solid #e50027; border-radius: 4px; transition: all 0.2s;'>Return to Login Screen</a>";
+                echo "</div>";
 
             } catch (PDOException $e) {
                 // if there is an issue.
