@@ -15,6 +15,20 @@
     --color-primary-scarlet: #e50027;
 }
 
+/*body and overflow*/
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden; /* this had better fix the overflow */
+        box-sizing: border-box;
+    }
+
+    *, *:before, *:after {
+        box-sizing: inherit; /* fix overflow please*/
+    }
+
 /* header styling */
     .background-image {
         position: fixed;/* dont move*/
@@ -141,7 +155,7 @@
     }
 
     /*pink parts*/
-    .dashboard-workspace, .attendance-workspace {
+    .dashboard-workspace, .attendance-workspace, .manage-workspace {
         flex: 1;
         background: var(--color-cotton-candy);
         border-radius: 5px;

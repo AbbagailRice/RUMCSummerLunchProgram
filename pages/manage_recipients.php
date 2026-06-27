@@ -60,86 +60,86 @@ try {
 
     <main class="main-content">
         <?php include '../includes/header.php'; ?>
-        
+
         <div class="workspace-container">
-            
-            <div class="recipient-actions-grid">
+            <div class ="manage-workspace">
+                <div class="recipient-actions-grid">
+                    
+                    <button type="button" class="action-btn-trigger" data-target="addModal">
+                        <div class="action-item-box">
+                            <span class="action-icon">+</span><br>
+                            <span class="action-label">Add Recipient</span>
+                        </div>
+                    </button>
+                    
+                    <button type="button" class="action-btn-trigger" data-target="deleteModal">
+                        <div class="action-item-box">
+                            <span class="action-icon">-</span><br>
+                            <span class="action-label">Delete Recipient</span>
+                        </div>
+                    </button>
+                    
+                </div>
                 
-                <button type="button" class="action-btn-trigger" data-target="addModal">
-                    <div class="action-item-box">
-                        <span class="action-icon">+</span><br>
-                        <span class="action-label">Add Recipient</span>
-                    </div>
-                </button>
-                
-                <button type="button" class="action-btn-trigger" data-target="deleteModal">
-                    <div class="action-item-box">
-                        <span class="action-icon">-</span><br>
-                        <span class="action-label">Delete Recipient</span>
-                    </div>
-                </button>
-                
-            </div>
-            
-            <div class="search-container">
-                    <label for="tableSearch">Search Recipients: </label>
-                    <input type="text" id="tableSearch" placeholder="Type a name, phone, or allergy..." onkeyup="filterTable()" style="padding: 6px; width: 250px; margin-bottom: 15px;">
-            </div>
+                <div class="search-container">
+                        <label for="tableSearch">Search Recipients: </label>
+                        <input type="text" id="tableSearch" placeholder="Type a name, phone, or allergy..." onkeyup="filterTable()" style="padding: 6px; width: 250px; margin-bottom: 15px;">
+                </div>
 
-            <div class ="recipent-table-container">
-                <?php 
-                    //if error with this table show why
-                    if (isset($error_msg)) {
-                        echo "<p class='error-message'>" . $error_msg . "</p>";
-                    }
-                ?>
+                <div class ="recipent-table-container">
+                    <?php 
+                        //if error with this table show why
+                        if (isset($error_msg)) {
+                            echo "<p class='error-message'>" . $error_msg . "</p>";
+                        }
+                    ?>
 
-                <table class="recipient-table" border="1" id="recipientTable">
-                    <thead>
-                        <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Age</th>
-                            <th>Allergies</th>
-                            <th>Primary Guardian</th>
-                            <th>Contact Info</th> 
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-                            $recipientRows = [];
-                            if ($stmt) {
-                                while ($Row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                    // save for delete modal
-                                    $recipientRows[] = $Row;
+                    <table class="recipient-table" border="1" id="recipientTable">
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Age</th>
+                                <th>Allergies</th>
+                                <th>Primary Guardian</th>
+                                <th>Contact Info</th> 
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                                $recipientRows = [];
+                                if ($stmt) {
+                                    while ($Row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                        // save for delete modal
+                                        $recipientRows[] = $Row;
 
-                                    $g_fname  = $Row['guardian_fname'] ?? '';
-                                    $g_lname  = $Row['guardian_lname'] ?? '';
-                                    $guardian = trim($g_fname . " " . $g_lname);
-                                    if ($guardian === '') { $guardian = "<em>None listed</em>"; }
+                                        $g_fname  = $Row['guardian_fname'] ?? '';
+                                        $g_lname  = $Row['guardian_lname'] ?? '';
+                                        $guardian = trim($g_fname . " " . $g_lname);
+                                        if ($guardian === '') { $guardian = "<em>None listed</em>"; }
 
-                                    echo "<tr class='table-row'>";
-                                    echo "<td class='cell-fname'>" . htmlspecialchars($Row['first_name']) . "</td>";
-                                    echo "<td class='cell-lname'>" . htmlspecialchars($Row['last_name']) . "</td>";
-                                    echo "<td class='cell-age'>" . htmlspecialchars($Row['age']) . "</td>";
-                                    echo "<td class='cell-allergies'>" . htmlspecialchars($Row['allergies'] ?? '') . "</td>";
-                                    echo "<td class='cell-guardian'>" . $guardian . "</td>";
-                                    echo "<td class='cell-contact'>" . htmlspecialchars($Row['contact'] ?? '') . "</td>";
-                                    
-                                    //edit button
-                                    echo "<td class='cell-action'>";
-                                    echo "<button type='button' onclick='openEditModal(" . json_encode($Row) . ")'>Edit</button>";
-                                    echo "</td>";
-                                    echo "</tr>";
+                                        echo "<tr class='table-row'>";
+                                        echo "<td class='cell-fname'>" . htmlspecialchars($Row['first_name']) . "</td>";
+                                        echo "<td class='cell-lname'>" . htmlspecialchars($Row['last_name']) . "</td>";
+                                        echo "<td class='cell-age'>" . htmlspecialchars($Row['age']) . "</td>";
+                                        echo "<td class='cell-allergies'>" . htmlspecialchars($Row['allergies'] ?? '') . "</td>";
+                                        echo "<td class='cell-guardian'>" . $guardian . "</td>";
+                                        echo "<td class='cell-contact'>" . htmlspecialchars($Row['contact'] ?? '') . "</td>";
+                                        
+                                        //edit button
+                                        echo "<td class='cell-action'>";
+                                        echo "<button type='button' onclick='openEditModal(" . json_encode($Row) . ")'>Edit</button>";
+                                        echo "</td>";
+                                        echo "</tr>";
+                                    }
                                 }
-                            }
-                        ?>
-                    </tbody>
-                </table>
+                            ?>
+                        </tbody>
+                    </table>
 
+                </div>
             </div>
-
         </div>
     </main>
 
