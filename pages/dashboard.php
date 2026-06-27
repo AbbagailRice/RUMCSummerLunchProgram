@@ -16,14 +16,14 @@
 
 <head>
     <title> Summer Lunch Program Dashboard </title>
-    <link rel="stylesheet" type="text/css" href="../CSS/Style.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/styles.css">
 </head>
 
 <body>
     <?php include '../includes/header.php'; ?>
     <?php include '../includes/sidebar.php'; ?>
 
-    <div class="dashboard-card">
+    <div class="main-content">
         <h2>Welcome to the Dashboard!</h2>
         <p>This is the dashboard page.</p>
         <a href="../services/logout.php" class="btn-logout">Logout</a>

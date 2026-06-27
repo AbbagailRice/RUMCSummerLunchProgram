@@ -45,12 +45,15 @@ try {
 <html>
 <head>
     <title>Attendance Tracking</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/styles.css">
 </head>
 <body>
 
     <div class="layout">
+
+        <?php include '../includes/header.php'; ?>
+        
         <main class="main-content">
-            <?php include '../includes/header.php'; ?>
 
             <div class="workspace-container">
                 

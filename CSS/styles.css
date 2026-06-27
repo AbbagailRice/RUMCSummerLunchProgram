@@ -1,0 +1,40 @@
+:root {
+    /* base colors */
+    --color-black: #000000;
+    --color-dim-grey: #5d6769;
+    --color-white: #ffffff;
+    
+    /* lights */
+    --color-pale-sky: #bfd7ea;
+    --color-dry-sage: #b6c69d;
+    
+    /* reds and pinks */
+    --color-cotton-rose: #fdd1d3;
+    --color-cotton-candy: #fda6a9;
+    --color-vibrant-coral: #ff5a5f;
+    --color-primary-scarlet: #e50027;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* keeps header on top */
+    height: 100%;
+    background-color: var(--color-white);
+    overflow: hidden;
+}
+
+.workspace-container {
+    flex: 1;
+    padding: 40px;
+    box-sizing: border-box;
+    display: flex;
+    background-color: var(--color-cotton-candy); /* pink part*/
+    overflow-y: auto; /* scroll in case attendance is long */
+}
+
+.attendance-workspace {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
