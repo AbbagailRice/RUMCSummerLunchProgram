@@ -55,7 +55,7 @@
         .logo-header h1 {
             margin: 0;
             font-size: 2.2rem;
-            font-weight: 800;
+            font-weight: 700;
             line-height: 1.1;
             text-transform: uppercase; /* make uppercase */
             letter-spacing: 0.5px; /* even spacing */
