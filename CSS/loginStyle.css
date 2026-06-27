@@ -15,7 +15,7 @@
     --color-primary-scarlet: #e50027;
 }
 
-.auth-wrapper {
+.auth-card {
     position: fixed;
     top: 0;
     left: 0;
@@ -25,9 +25,7 @@
     justify-content: center; /* horiz center */
     align-items: center; /* vert center*/
     z-index: 1; /* above bg*/
-}
 
-.auth-card {
     background-color: var(--color-white);
     width: 400px;
     padding: 60px 40px;
@@ -49,25 +47,25 @@
     font-weight: 700;
 }
 
-.btn-login {
+.btn-login-section {
     background-color: var(--color-primary-scarlet);
     color: var(--color-white);
 }
 
-.btn-login:hover {
+.btn-login-section:hover {
     background-color: #c70020;
 }
 
-.btn-signup {
+.btn-register {
     background-color: var(--color-cotton-candy);
     color: var(--color-white);
 }
 
-.btn-signup:hover {
+.btn-register:hover {
     background-color: var(--color-vibrant-coral);
 }
 
-.divider-text {
+.middle-divider {
     margin: 30px 0;
     font-size: 0.9rem;
     color: var(--color-dim-grey);
