@@ -48,11 +48,10 @@ try {
     <link rel="stylesheet" type="text/css" href="../CSS/styles.css">
 </head>
 <body>
-
-    <?php include '../includes/header.php'; ?>
     <div class="layout">
 
         <main class="main-content">
+            <?php include '../includes/header.php'; ?>
 
             <div class="workspace-container">
                 
