@@ -46,6 +46,7 @@ try {
 <head>
     <title>Attendance Tracking</title>
     <link rel="stylesheet" type="text/css" href="../CSS/styles.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/table.css">
 </head>
 <body>
     <div class="layout">
@@ -66,7 +67,7 @@ try {
                         } else {
                     ?>
                     
-                    <table class="attendance-table" border="1">
+                    <table class="attendance-table">
                         <thead>
                             <tr>
                                 <th>Last Name</th>
@@ -93,20 +94,23 @@ try {
                                         echo "<td class='cell-day-check'>";
                                         
                                         // check if alray logged
-                                        $has_picked_up = isset($existing_pickups[$Row['recipient_id']]) && in_array($day['db_date'], $existing_pickups[$Row['recipient_id']]);
+                                        $has_picked_up = isset($existing_pickups[$Row['recipient_id']]) 
+                                            && in_array($day['db_date'], $existing_pickups[$Row['recipient_id']]);
                                         
                                         // switch how it is displayed based on status.
                                         if ($has_picked_up) {
                                             $btn_text = "✓ Present"; //here
+                                            $status_button = "mark-present";
                                         } else {
-                                            $btn_text = "[ &nbsp; ]"; // empty 
+                                            $btn_text = "[ &nbsp; ]"; // empty
+                                            $status_button = "mark-empty";
                                         }
                                         
                                         echo "<form action='../services/log_attendance.php' method='POST'>";
                                         echo "<input type='hidden' name='recipient_id' value='" . $Row['recipient_id'] . "'>";
                                         echo "<input type='hidden' name='attendance_date' value='" . $day['db_date'] . "'>";
                                         
-                                        echo "<button type='submit' name='status' value='Present'>" . $btn_text . "</button>";
+                                        echo "<button type='submit' name='status' value='Present' class='table-submit " . $status_button . "'>" . $btn_text . "</button>";
                                         
                                         echo "</form>";
                                         echo "</td>";

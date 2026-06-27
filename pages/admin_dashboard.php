@@ -34,60 +34,63 @@
 <head>
     <title>SLP Admin Dashboard</title>
     <link rel="stylesheet" type="text/css" href="../CSS/styles.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/table.css">
 </head>
 <body>
-
-    <?php include '../includes/header.php'; ?>
-    
-    <div class="admin-container">
-        <h2> ADMIN</h2>
+<div class="layout">
+    <div class= "main-contnent">
+        <?php include '../includes/header.php'; ?>
         
-        <div class="pending-container">
-            <h3> Pending Volunteer Account Approvals</h3>
-
-            <!--//check if there are none-->
-            <?php if(empty($pending_users)): ?>
-                <p> No pending volunteers.</p>
+        <div class="admin-container">
+            <h2> ADMIN</h2>
             
-            <!--//If there are.-->
-            <?php else: ?>
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Username</th>
-                            <th>Contact</th>
-                            <th>Has Church Keys?</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!--// loop though each pending user and process them out.-->
-                        <?php foreach ($pending_users as $user): ?>
+            <div class="pending-container">
+                <h3> Pending Volunteer Account Approvals</h3>
+
+                <!--//check if there are none-->
+                <?php if(empty($pending_users)): ?>
+                    <p> No pending volunteers.</p>
+                
+                <!--//If there are.-->
+                <?php else: ?>
+                    <table class="admin-table">
+                        <thead>
                             <tr>
-                                <!--//cleans and echos out the info-->
-                                <td><?php echo htmlspecialchars($user['first_name'] . ' ' . $user['last_name']); ?></td>
-                                <td><?php echo htmlspecialchars($user['username']); ?></td>
-                                <td><?php echo htmlspecialchars($user['contact']); ?></td>
-                                <td><?php echo $user['has_keys'] == 1 ? 'Yes' : 'No'; ?></td> <!--looks at bool-->
-                                <td>
-                                    <!--//active form for adding a new user only sends the id back to db-->
-                                    <form action="../services/approve_user.php" method="POST">
-                                        <input type="hidden" name="volunteer_id" value="<?php echo $user['volunteer_id']; ?>">
-                                        <button type="submit">Approve User</button>
-                                    </form>
-                                </td>
+                                <th>Name</th>
+                                <th>Username</th>
+                                <th>Contact</th>
+                                <th>Has Church Keys?</th>
+                                <th>Action</th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            <?php endif; ?>
+                        </thead>
+                        <tbody>
+                            <!--// loop though each pending user and process them out.-->
+                            <?php foreach ($pending_users as $user): ?>
+                                <tr>
+                                    <!--//cleans and echos out the info-->
+                                    <td><?php echo htmlspecialchars($user['first_name'] . ' ' . $user['last_name']); ?></td>
+                                    <td><?php echo htmlspecialchars($user['username']); ?></td>
+                                    <td><?php echo htmlspecialchars($user['contact']); ?></td>
+                                    <td><?php echo $user['has_keys'] == 1 ? 'Yes' : 'No'; ?></td> <!--looks at bool-->
+                                    <td>
+                                        <!--//active form for adding a new user only sends the id back to db-->
+                                        <form action="../services/approve_user.php" method="POST">
+                                            <input type="hidden" name="volunteer_id" value="<?php echo $user['volunteer_id']; ?>">
+                                            <button type="submit">Approve User</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php endif; ?>
+            </div>
+
+
+            <br>
+            <a href="../services/logout.php">Logout</a>
         </div>
-
-
-        <br>
-        <a href="../services/logout.php">Logout</a>
     </div>
-
+</div>
 </body>
 </html>

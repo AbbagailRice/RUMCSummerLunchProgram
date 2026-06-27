@@ -1,0 +1,78 @@
+:root {
+    /* base colors */
+    --color-black: #000000;
+    --color-dim-grey: #5d6769;
+    --color-white: #ffffff;
+    
+    /* lights */
+    --color-pale-sky: #bfd7ea;
+    --color-dry-sage: #b6c69d;
+    
+    /* reds and pinks */
+    --color-cotton-rose: #fdd1d3;
+    --color-cotton-candy: #fda6a9;
+    --color-vibrant-coral: #ff5a5f;
+    --color-primary-scarlet: #e50027;
+}
+
+/*table styling*/
+.attendance-table, .admin-table, .recipient-table {
+    width: 100%;
+    border-collapse: collapse; /* only want one border*/
+    border-radius: 6px;
+
+    font-family: 'Arial', sans-serif;
+    margin-top: 15px;
+}
+
+/* the header cells */
+.attendance-table th, .admin-table th, .recipient-table th {
+    background-color: var(--color-vibrant-coral);
+    color: var(--color-white);
+    font-weight: 600;
+    text-align: left;
+    padding: 12px 15px;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* other cells */
+.attendance-table td, .admin-table td, .recipient-table td {
+    padding: 10px 15px;
+    color: var(--color-dim-grey);
+    vertical-align: middle;
+}
+
+/* for allergies */
+.cell-allergies {
+    color: var(--color-primary-scarlet);
+}
+
+/* center the check mark */
+.cell-day-check {
+    text-align: center !important;
+}
+
+.table-submit {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    /*strip it*/
+
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.mark-present {
+    color: var(--color-dry-sage);
+}
+
+.mark-empty {
+    color: var(--color-dim-grey);
+}
+

@@ -53,6 +53,7 @@ try {
         }
     </style>
     <link rel="stylesheet" type="text/css" href="../CSS/styles.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/table.css">
 </head>
 <body>
 
@@ -94,7 +95,7 @@ try {
                         }
                     ?>
 
-                    <table class="recipient-table" border="1" id="recipientTable">
+                    <table class="recipient-table">
                         <thead>
                             <tr>
                                 <th>First Name</th>

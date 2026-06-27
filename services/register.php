@@ -16,7 +16,7 @@
             try{
 
                 //check for duplicates then send back if there is.
-                $check_stmt = $pdo->prepare("selct volunteer_id from volunteers where username = :username limit 1");
+                $check_stmt = $pdo->prepare("select volunteer_id from volunteers where username = :username limit 1");
                 $check_stmt->execute(['username' => $username]);
                 
                 if ($check_stmt->fetch()) {
