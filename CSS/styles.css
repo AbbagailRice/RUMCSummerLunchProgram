@@ -110,21 +110,30 @@
         flex-direction: column;
         overflow: hidden;
 
-        padding: 25px;
+        margin-right: 100px; /*side bar margin*/
 
+        padding-top: 140px; /*padding for logo and sides*/
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-bottom: 25px;
+        
+        box-sizing: border-box;
         font-family: 'Arial', sans-serif;
     }
 
+
     /*white part*/
     .workspace-container {
-        width: calc(100% - 60px);
-        height: 100%;
+        flex: 1; 
+        width: 100%;
 
-        margin: 25px;
-
+        margin: 0; 
         padding: 25px;
-
         border-radius: 6px;
+
+        display: flex; 
+        flex-direction: column;
+        box-sizing: border-box;
 
         background-color: var(--color-white);
         overflow-y: hidden;
@@ -133,14 +142,12 @@
     /*pink parts*/
     .dashboard-workspace, .attendance-workspace {
         flex: 1;
-
         background: var(--color-cotton-candy);
-
         border-radius: 5px;
-
         padding: 20px;
-
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        box-sizing: border-box;
     }
+

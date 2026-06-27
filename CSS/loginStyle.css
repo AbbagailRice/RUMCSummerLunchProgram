@@ -15,6 +15,48 @@
     --color-primary-scarlet: #e50027;
 }
 
+/* header styling */
+    .background-image {
+        position: fixed;/* dont move*/
+        top: 0;
+        left: 0;
+        width: 100vw;/*frame size */
+        height: 100vh;
+        z-index: -2; /* go to back*/
+        background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), 
+            url('../photos/background2.jpg');
+        background-size: cover; /* scale to size*/
+        background-position: center; /* keeps center even if cropped*/
+        background-repeat: no-repeat;
+
+    }
+
+    .logo-header {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        display: flex;
+        align-items: center; /* vertical align */
+        gap: 15px; /* spacing */
+    }
+
+    .logo img {/* sizing for the image */
+        height: 90px;
+        width: auto;
+        display: block;
+    }
+
+    .logo-header h1 {
+        margin: 0;
+        font-size: 2.2rem;
+        font-weight: 700;
+        line-height: 1.1;
+        text-transform: uppercase; /* make uppercase */
+        letter-spacing: 0.5px; /* even spacing */
+        font-family: 'Arial', sans-serif;
+    }
+
 .auth-wrapper {
     position: fixed;
     top: 0;
