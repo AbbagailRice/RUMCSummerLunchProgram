@@ -11,12 +11,12 @@
     //grab all volunteers. aproved and not approved
     try{
         // get the non active ones (is_approved = 0)
-        $stmt_pending = $pdo->prepare("SELECT volunteer_id, first_name, last_name, contact, username, has_keys FROM volunteers WHERE is_approved = 0 AND is_admin = 0");
+        $stmt_pending = $pdo->prepare("select volunteer_id, first_name, last_name, contact, username, has_keys from volunteers where is_approved = 0 and is_admin = 0");
         $stmt_pending->execute();
         $pending_users = $stmt_pending->fetchAll();
 
         // get the active ones (is_approved = 1)
-        $stmt_approved = $pdo->prepare("SELECT volunteer_id, first_name, last_name, contact, username, has_keys FROM volunteers WHERE is_approved = 1 AND is_admin = 0");
+        $stmt_approved = $pdo->prepare("select volunteer_id, first_name, last_name, contact, username, has_keys from volunteers where is_approved = 1 and is_admin = 0");
         $stmt_approved->execute();
         $approved_users = $stmt_approved->fetchAll();
     } catch (PDOException $e) { //if for some reason records dont load.
@@ -33,8 +33,10 @@
 <html>
 <head>
     <title>SLP Admin Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/styles.css">
 </head>
 <body>
+
     <?php include '../includes/header.php'; ?>
     
     <div class="admin-container">

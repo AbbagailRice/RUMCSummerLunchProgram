@@ -138,7 +138,7 @@
 
 
     /*white part*/
-    .workspace-container {
+    .workspace-container, .admin-container {
         flex: 1; 
         width: 100%;
 
@@ -155,9 +155,9 @@
     }
 
     /*pink parts*/
-    .dashboard-workspace, .attendance-workspace, .manage-workspace {
+    .dashboard-workspace, .attendance-workspace, .manage-workspace, .register-container, .pending-container {
         flex: 1;
-        background: var(--color-cotton-candy);
+        background: var(--color-cotton-rose);
         border-radius: 5px;
         padding: 20px;
         display: flex;
