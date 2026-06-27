@@ -21,14 +21,16 @@
 
 <body>
     <?php include '../includes/header.php'; ?>
-    <?php include '../includes/sidebar.php'; ?>
+    <div class="layout">
 
-    <div class="main-content">
-        <h2>Welcome to the Dashboard!</h2>
-        <p>This is the dashboard page.</p>
-        <a href="../services/logout.php" class="btn-logout">Logout</a>
+        <div class="main-content">
+            <h2>Welcome to the Dashboard!</h2>
+            <p>This is the dashboard page.</p>
+            <a href="../services/logout.php" class="btn-logout">Logout</a>
+        </div>
+
+        <?php include '../includes/sidebar.php'; ?>
     </div>
-
 </body>
 
 </html>

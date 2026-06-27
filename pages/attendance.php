@@ -49,10 +49,9 @@ try {
 </head>
 <body>
 
+    <?php include '../includes/header.php'; ?>
     <div class="layout">
 
-        <?php include '../includes/header.php'; ?>
-        
         <main class="main-content">
 
             <div class="workspace-container">

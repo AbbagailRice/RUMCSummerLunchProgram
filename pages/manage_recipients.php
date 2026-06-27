@@ -55,8 +55,9 @@ try {
     <link rel="stylesheet" type="text/css" href="../CSS/styles.css">
 </head>
 <body>
+<?php include '../includes/header.php'; ?>
 <div class="layout">
-    <?php include '../includes/header.php'; ?>
+
     <main class="main-content">
 
         <div class="workspace-container">
