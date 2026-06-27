@@ -35,8 +35,8 @@
 
 /*white part*/
 .workspace-container {
-    width: calc(100% - 50px);
-    height: 70vh;
+    width: 800;
+    height: 90vh;
 
     margin: 25px;
 
