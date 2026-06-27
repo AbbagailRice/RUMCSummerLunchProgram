@@ -15,50 +15,132 @@
     --color-primary-scarlet: #e50027;
 }
 
-.layout {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-}
+/* header styling */
+    .background-image {
+        position: fixed;/* dont move*/
+        top: 0;
+        left: 0;
+        width: 100vw;/*frame size */
+        height: 100vh;
+        z-index: -2; /* go to back*/
+        background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), 
+            url('../photos/background2.jpg');
+        background-size: cover; /* scale to size*/
+        background-position: center; /* keeps center even if cropped*/
+        background-repeat: no-repeat;
 
-.main-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+    }
 
-    padding: 25px;
+    .logo-header {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        display: flex;
+        align-items: center; /* vertical align */
+        gap: 15px; /* spacing */
+    }
 
-    font-family: 'Arial', sans-serif;
-}
+    .logo img {/* sizing for the image */
+        height: 90px;
+        width: auto;
+        display: block;
+    }
 
-/*white part*/
-.workspace-container {
-    width: 800;
-    height: 90vh;
+    .logo-header h1 {
+        margin: 0;
+        font-size: 2.2rem;
+        font-weight: 700;
+        line-height: 1.1;
+        text-transform: uppercase; /* make uppercase */
+        letter-spacing: 0.5px; /* even spacing */
+        font-family: 'Arial', sans-serif;
+    }
 
-    margin: 25px;
+/* sidebar Styling*/
+     .sidebar-navigation {
+        position: fixed; /* layout rule  */
+        top: 0;
+        right: 0; /* set it to right fixed*/
+        width: 100px;
+        height: 100vh; /* top to bottom*/
+        background-color: var(--color-primary-scarlet);
+        
+        /* alignments of the links */
+        display: flex;
+        flex-direction: column; /* stack vert */
+        align-items: center; /* centered horiz */
+        gap: 30px; /* space between each */
+        box-sizing: border-box;
+        z-index: 10; /* keep to top */
+    }
 
-    padding: 25px;
+    /* the link containers*/
+    .nav-item a {
+        display: block;
+        text-align: center;
+        text-decoration: none;  /* no weird line under when clicked */
+        color: var(--color-cotton-rose);
+        font-weight: bold;
+        max-width: 100px; /* Safe padding buffer width text wrapping constraint */
+        word-wrap: break-word; /*break word if it is to long for sidebar*/
 
-    border-radius: 6px;
+        font-family: 'Arial', sans-serif;
+    }
 
-    background-color: var(--color-white);
-    overflow-y: hidden;
-}
+    /* icons */
+    .nav-icon {
+        display: inline-block;
+        font-size: 2.4rem; /*sizing*/
+        margin-bottom: 5px; /* spacing*/
+        color: var(--color-cotton-rose);
+    }
 
-/*pink parts*/
-.dashboard-workspace, .attendance-workspace {
-    flex: 1;
+/* general layout */
+    .layout {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
 
-    background: var(--color-cotton-candy);
+    .main-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
 
-    border-radius: 5px;
+        padding: 25px;
 
-    padding: 20px;
+        font-family: 'Arial', sans-serif;
+    }
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
+    /*white part*/
+    .workspace-container {
+        width: calc(100% - 60px);
+        height: 100%;
+
+        margin: 25px;
+
+        padding: 25px;
+
+        border-radius: 6px;
+
+        background-color: var(--color-white);
+        overflow-y: hidden;
+    }
+
+    /*pink parts*/
+    .dashboard-workspace, .attendance-workspace {
+        flex: 1;
+
+        background: var(--color-cotton-candy);
+
+        border-radius: 5px;
+
+        padding: 20px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
