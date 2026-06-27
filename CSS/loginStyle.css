@@ -38,6 +38,9 @@
     align-items: stretch;
     box-sizing: border-box;
 
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+
 }
 
 .login-section input[type="text"],
@@ -96,4 +99,5 @@
     margin: 30px 0;
     font-size: 0.9rem;
     color: var(--color-dim-grey);
+    text-align: center;
 }
