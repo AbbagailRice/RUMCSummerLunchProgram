@@ -8,7 +8,7 @@
         header("Location: ../index.php");
         exit();
     }
-    require_once '../services/db_connection.php'; 
+    require_once '../services/db_connect.php';
 
     try {
         // prev day total
