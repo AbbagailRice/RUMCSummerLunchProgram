@@ -72,7 +72,7 @@ try {
                         } else {
                     ?>
                     
-                    <table class="attendance-table">
+                    <table class="attendance-table" id="attendanceTable">
                         <thead>
                             <tr>
                                 <th>Last Name</th>
@@ -144,8 +144,8 @@ try {
         function filterTable() {
             const input = document.getElementById('tableSearch');
             const filter = input.value.toLowerCase();
-            const table = document.getElementById('recipientTable');
-            const rows = table.getElementsByClassName('table-row');
+            const table = document.getElementById('attendanceTable');
+            const rows = table.getElementsByClassName('attendance-row');
 
             for (let i = 0; i < rows.length; i++) {
                 // get text content
