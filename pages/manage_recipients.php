@@ -95,7 +95,7 @@ try {
                         }
                     ?>
 
-                    <table class="recipient-table">
+                    <table class="recipient-table" id="recipientTable">
                         <thead>
                             <tr>
                                 <th>First Name</th>

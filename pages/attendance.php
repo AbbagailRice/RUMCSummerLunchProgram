@@ -59,6 +59,11 @@ try {
                 <div class="attendance-workspace">
                     <h3>Weekly Attendance</h3>
 
+                    <div class="search-container">
+                        <label for="tableSearch">Search Recipients: </label>
+                        <input type="text" id="tableSearch" placeholder="Type a name..." onkeyup="filterTable()" style="padding: 6px; width: 250px; margin-bottom: 15px;">
+                    </div>
+
                     <?php 
                         if (isset($error_msg)){//if any error
                             echo "<p>" . $error_msg . "</p>";
@@ -133,6 +138,28 @@ try {
         <?php include '../includes/sidebar.php'; ?>
 
     </div>
+
+    <script>
+        //table filter
+        function filterTable() {
+            const input = document.getElementById('tableSearch');
+            const filter = input.value.toLowerCase();
+            const table = document.getElementById('recipientTable');
+            const rows = table.getElementsByClassName('table-row');
+
+            for (let i = 0; i < rows.length; i++) {
+                // get text content
+                const rowText = rows[i].textContent || rows[i].innerText;
+                
+                // check if match otherwise hide
+                if (rowText.toLowerCase().indexOf(filter) > -1) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
 
 </body>
 </html>
