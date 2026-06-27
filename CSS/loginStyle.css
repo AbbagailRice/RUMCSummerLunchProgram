@@ -15,7 +15,7 @@
     --color-primary-scarlet: #e50027;
 }
 
-.auth-card {
+.auth-wrapper {
     position: fixed;
     top: 0;
     left: 0;
@@ -25,7 +25,9 @@
     justify-content: center; /* horiz center */
     align-items: center; /* vert center*/
     z-index: 1; /* above bg*/
+}
 
+.auth-card {
     background-color: var(--color-white);
     width: 400px;
     padding: 60px 40px;

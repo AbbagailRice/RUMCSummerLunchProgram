@@ -10,6 +10,7 @@
 <body>
     <?php include 'includes/header.php'; ?>
 
+    <div class = "auth-wrapper">
     <div class="auth-card">
         
         <div class= 'login-section'>
@@ -36,7 +37,7 @@
         </div>
 
     </div>
-
+    </div>
    
 
 </body>
