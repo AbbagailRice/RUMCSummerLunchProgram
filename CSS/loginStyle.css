@@ -1,0 +1,74 @@
+:root {
+    /* base colors */
+    --color-black: #000000;
+    --color-dim-grey: #5d6769;
+    --color-white: #ffffff;
+    
+    /* lights */
+    --color-pale-sky: #bfd7ea;
+    --color-dry-sage: #b6c69d;
+    
+    /* reds and pinks */
+    --color-cotton-rose: #fdd1d3;
+    --color-cotton-candy: #fda6a9;
+    --color-vibrant-coral: #ff5a5f;
+    --color-primary-scarlet: #e50027;
+}
+
+.auth-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* horiz center */
+    align-items: center; /* vert center*/
+    z-index: 1; /* above bg*/
+}
+
+.auth-card {
+    background-color: var(--color-white);
+    width: 400px;
+    padding: 60px 40px;
+    border-radius: 4px; /* round corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* yknow i need me shadows! */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+
+}
+
+.btn {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.btn-login {
+    background-color: var(--color-primary-scarlet);
+    color: var(--color-white);
+}
+
+.btn-login:hover {
+    background-color: #c70020;
+}
+
+.btn-signup {
+    background-color: var(--color-cotton-candy);
+    color: var(--color-white);
+}
+
+.btn-signup:hover {
+    background-color: var(--color-vibrant-coral);
+}
+
+.divider-text {
+    margin: 30px 0;
+    font-size: 0.9rem;
+    color: var(--color-dim-grey);
+}

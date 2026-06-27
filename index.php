@@ -3,7 +3,7 @@
 
 <head>
     <title> Summer Lunch Program Login Page </title>
-        <link rel="stylesheet" type="text/css" href="CSS/Style.css">
+        <link rel="stylesheet" type="text/css" href="CSS/loginStyle.css">
 
 </head>
 
