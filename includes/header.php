@@ -59,6 +59,7 @@
             line-height: 1.1;
             text-transform: uppercase; /* make uppercase */
             letter-spacing: 0.5px; /* even spacing */
+            font-family: 'Arial', sans-serif;
         }
 
     </style>

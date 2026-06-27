@@ -47,7 +47,9 @@
             color: var(--color-cotton-rose);
             font-weight: bold;
             max-width: 100px; /* Safe padding buffer width text wrapping constraint */
-            word-wrap: break-word; /*brak word if it is to long for sidebar*/
+            word-wrap: break-word; /*break word if it is to long for sidebar*/
+
+            font-family: 'Arial', sans-serif;
         }
 
         /* icons */

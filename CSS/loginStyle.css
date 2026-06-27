@@ -40,6 +40,19 @@
 
 }
 
+.login-section input[type="text"],
+.login-section input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid var(--color-dim-grey);
+    border-radius: 4px;
+    
+    box-sizing: border-box; 
+    
+    font-size: 1rem;
+}
+
 .login-section input[type="submit"],
 .btn-register {
     display: block;
@@ -55,6 +68,8 @@
 
     box-sizing: border-box;
     transition: background-color 0.2s ease;
+
+    font-family: 'Arial', sans-serif;
 }
 
 .login-section input[type="submit"] {
