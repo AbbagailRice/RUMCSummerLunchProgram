@@ -112,7 +112,7 @@
 
         margin-right: 100px; /*side bar margin*/
 
-        padding-top: 140px; /*padding for logo and sides*/
+        padding-top: 10px; /*padding for logo and sides*/
         padding-left: 25px;
         padding-right: 25px;
         padding-bottom: 25px;
@@ -136,7 +136,7 @@
         box-sizing: border-box;
 
         background-color: var(--color-white);
-        overflow-y: hidden;
+        overflow: hidden;
     }
 
     /*pink parts*/
