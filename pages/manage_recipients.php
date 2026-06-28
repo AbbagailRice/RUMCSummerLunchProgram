@@ -305,7 +305,7 @@ try {
             const rows = table.getElementsByClassName('table-row');
 
             for (let i = 0; i < rows.length; i++) {
-                // Gget text content
+                // get text content
                 const rowText = rows[i].textContent || rows[i].innerText;
                 
                 // check if match otherwise hide
@@ -321,7 +321,6 @@ try {
     <!--MODAL script-->
     <script>
         //edit modal part: to inject data based on what the user clicks on-
-        //open and inject
         function openEditModal(recipientData) {
             //force close others
             document.querySelectorAll('.modal-overlay').forEach(modal => {
@@ -342,7 +341,7 @@ try {
             document.getElementById('editModal').style.display = 'block';
         }
 
-        //general modal thigns. what to do when clicking where stuff
+        //general modal things. what to do when clicking where stuff
         document.querySelectorAll('.action-btn-trigger').forEach(button => {
             button.addEventListener('click', () => {
                 document.querySelectorAll('.modal-overlay').forEach(modal => {

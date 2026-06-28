@@ -20,4 +20,11 @@
             Attendance
         </a>
     </div>
+
+    <div class="nav-item">
+        <a href="../pages/inventory.php">
+            <span class="nav-icon">🗐</span><br>
+            Inventory
+        </a>
+    </div>
 </nav>
