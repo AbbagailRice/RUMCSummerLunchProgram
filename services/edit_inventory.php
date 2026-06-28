@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("Error: Required fields are missing.");
     }
 } else { 
-    header("Location: ../pages/manage_inventory.php");
+    header("Location: ../pages/inventory.php");
     exit();
 }
 ?>

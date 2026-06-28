@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
 } else { // if accessed directly
-    header("Location: ../pages/manage_inventory.php");
+    header("Location: ../pages/inventory.php");
     exit();
 }
 ?>
