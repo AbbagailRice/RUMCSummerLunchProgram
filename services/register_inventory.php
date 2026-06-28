@@ -34,14 +34,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // execute
             $stmt = $pdo->prepare($sqlString);
             $stmt->execute([
-                'item_name'    => $item_name,
-                'quantity'     => $quantity,
-                'expire_date'  => $expire_date,
+                'item_name'=> $item_name,
+                'quantity' => $quantity,
+                'expire_date' => $expire_date,
                 'shelf_stable' => $shelf_stable
             ]);
 
             // done go back
-            header("Location: ../pages/manage_inventory.php?success=1");
+            header("Location: ../pages/inventory.php?success=1");
             exit();
 
         } catch (PDOException $e) { // if something fails

@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // check if it existed and was deleted
             if ($stmt->rowCount() > 0) {
                 // done return
-                header("Location: ../pages/manage_inventory.php?success=delete");
+                header("Location: ../pages/inventory.php?success=delete");
                 exit();
             } else {// not found
                 die("Error: Record not found in the system database.");

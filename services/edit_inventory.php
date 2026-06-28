@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ]);
 
             // done go back
-            header("Location: ../pages/manage_inventory.php?success=update");
+            header("Location: ../pages/inventory.php?success=update");
             exit();
 
         } catch (PDOException $e) {
