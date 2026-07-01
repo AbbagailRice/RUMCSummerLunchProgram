@@ -72,9 +72,6 @@
                         </div>
                     </div>
 
-                    <a href="../services/logout.php" class="btn-logout">
-                        Logout
-                    </a>
                 </div>
             </div>
         </div>
