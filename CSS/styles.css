@@ -198,6 +198,7 @@
     .recipient-actions-grid {
         display: flex;
         flex-direction: row;/* aligns children horizontally */
+        align-items: bottom;
         gap: 15px;
         margin-bottom: 15px;
     }
