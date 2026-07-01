@@ -202,15 +202,25 @@
 /*for mobile and tablets and such*/
 @media (max-width: 768px) {
     /* fix forcing things past the mobile view sceen */
-    .layout, .main-content, .workspace-container, .admin-container {
-        height: 100%; 
-        max-height: calc(100vh - 60px); /*account for nav bars on phones*/
+    .layout, .main-content {
+        height: 100vh;
+        max-height: calc(100vh - 60px);
+        overflow: hidden;
+    }
+
+    .workspace-container, .admin-container {
+        height: 100% !important;
+        max-height: 100% !important;
+        box-sizing: border-box;
     }
 
     /* tighten around contents */
     .dashboard-workspace, .attendance-workspace, .manage-workspace, .register-container, .pending-container {
-        justify-content: space-between;
-        height: 100%;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        height: 100% !important;
         box-sizing: border-box;
     }
 
