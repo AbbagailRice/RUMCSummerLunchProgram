@@ -21,6 +21,8 @@ try{
     //create a new PDO instance
     $pdo = new PDO($dsn, $username, $password, $options);
 
+    //put us in the right time zone because apperently we are in utc and not est
+    $pdo->exec("SET time_zone = '-04:00';");
 
 }
 catch (PDOException $e) {
