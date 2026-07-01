@@ -86,9 +86,6 @@
                 <?php endif; ?>
             </div>
 
-
-            <br>
-            <a href="../services/logout.php">Logout</a>
         </div>
     </div>
     <?php include '../includes/sidebar.php'; ?>
