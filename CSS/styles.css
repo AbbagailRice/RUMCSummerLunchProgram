@@ -172,56 +172,54 @@
         justify-content: center;
     }
 
+
+/*button logout*/
     .btn-logout {
-    display: inline-block;
-    padding: 10px 24px;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: 700;
+        display: inline-block;
+        padding: 10px 22px;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-weight: 700;
 
-    text-align: center;
-    text-decoration: none;
+        text-align: center;
+        text-decoration: none;
 
-    box-sizing: border-box;
-    transition: background-color 0.2s ease;
+        box-sizing: border-box;
 
-    font-family: 'Arial', sans-serif;
-    margin-top: auto;
-}
+        font-family: 'Arial', sans-serif;
+        margin-top: auto;
 
-.btn-logout {
-    background-color: var(--color-primary-scarlet);
-    color: var(--color-white);
-}
+        background-color: var(--color-primary-scarlet);
+        color: var(--color-white);
+    }
 
-.btn-logout:hover {
-    background-color: #980019;
-}
+
 
 /*for mobile and tablets and such*/
-@media (max-width: 768px) {
-    /* fix forcing things past the mobile view sceen */
-    .layout, .main-content {
-        height: 100vh;
-        max-height: calc(100vh - 60px);
-        overflow: hidden;
-    }
+    /*not working*/
+    @media (max-width: 768px) {
+        /* fix forcing things past the mobile view sceen */
+        .layout, .main-content {
+            height: 100vh;
+            max-height: calc(100vh - 60px);
+            overflow: hidden;
+        }
 
-    .workspace-container, .admin-container {
-        height: 100% !important;
-        max-height: 100% !important;
-        box-sizing: border-box;
-    }
+        .workspace-container, .admin-container {
+            height: 100% !important;
+            max-height: 100% !important;
+            box-sizing: border-box;
+        }
 
-    /* tighten around contents */
-    .dashboard-workspace, .attendance-workspace, .manage-workspace, .register-container, .pending-container {
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        height: 100% !important;
-        box-sizing: border-box;
-    }
+        /* tighten around contents */
+        .dashboard-workspace, .attendance-workspace, .manage-workspace, .register-container, .pending-container {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            height: 100% !important;
+            box-sizing: border-box;
+        }
 
-}
+    }
