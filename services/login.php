@@ -13,8 +13,8 @@
         //make sure the username and password are not empty
         if (!empty($username) && !empty($password)) {
             //get the user from the database (including fname, username, password, and is_approved) and limit to 1 result
-            $stmt = $pdo->prepare("SELECT volunteer_id, first_name, username, password, 
-                is_approved, is_admin FROM volunteers WHERE username = :username LIMIT 1");
+            $stmt = $pdo->prepare("select volunteer_id, first_name, username, password, 
+                is_approved, is_admin from volunteers where username = :username limit 1");
             $stmt->execute(['username' => $username]); //run query using the provided parameter, do this way to prevent SQL injection
             $user = $stmt->fetch(); //get res as array
 
@@ -27,7 +27,7 @@
                     $_SESSION['volunteer_id'] = $user['volunteer_id'];
                     $_SESSION['first_name'] = $user['first_name'];
                     $_SESSION['username'] = $user['username'];
-                    $_SESSION['is_admin']     = $user['is_admin'];
+                    $_SESSION['is_admin'] = $user['is_admin'];
 
                     if ($_SESSION['is_admin'] == 1) {
                         // check if admin

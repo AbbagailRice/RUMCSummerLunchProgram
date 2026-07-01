@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($item_id > 0 && !empty($item_name) && $quantity !== '') {
         try {
             $sql = "update inventory set item_name = :item_name, quantity = :quantity, 
-                        expire_date = :expire_date, shelf_stable = :shelf_stable where item_id = :item_id";
+                expire_date = :expire_date, shelf_stable = :shelf_stable where item_id = :item_id";
                     
             // execute the statement securely
             $stmt = $pdo->prepare($sql);

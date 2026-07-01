@@ -234,9 +234,11 @@ try {
                             echo "<td class='cell-guardian'>" . $guardian . "</td>";
                             echo "<td class='cell-contact'>" . htmlspecialchars($Row['contact']) . "</td>";
                             echo "<td class='cell-action'>";
+
+                            //post form
                             echo "<form action='../services/delete.php' method='POST' class='table-delete-form' onsubmit=\"return confirm('Confirm Delete?');\">";
                             echo "<input type='hidden' name='recipient_id' value='" . $Row['recipient_id'] . "'>";
-                            //submit
+                            //submit button
                             echo "<button type='submit' class='table-delete-btn'>Delete</button>";
                             echo "</form>";
                             echo "</td>";
@@ -342,33 +344,39 @@ try {
         }
 
         //general modal things. what to do when clicking where stuff
+        // open modal when trigger button is clicked
+        //find all buttons to open first
         document.querySelectorAll('.action-btn-trigger').forEach(button => {
             button.addEventListener('click', () => {
+                //close all modals before opening
                 document.querySelectorAll('.modal-overlay').forEach(modal => {
-                    modal.style.display = 'none';
+                    modal.style.display = 'none'; //hide
                     const form = modal.querySelector('form');
-                    if (form) { form.reset(); }
+                    if (form) { form.reset(); } //clear any form data when closing
                 });
 
+                // show the targeted modal by id
                 const targetId = button.getAttribute('data-target');
                 document.getElementById(targetId).style.display = 'block';
             });
         });
 
+        // close modal when close button is clicked
         document.querySelectorAll('.modal-close-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const modal = e.target.closest('.modal-overlay');
-                modal.style.display = 'none';
+                modal.style.display = 'none'; //hide it now
                 const form = modal.querySelector('form');
-                if (form) { form.reset(); }
+                if (form) { form.reset(); } //clear any form data when closing
             });
         });
-
+        // close modal when clicking outside the modal content(outside click isnt working for some reason)
         window.addEventListener('click', (e) => {
-            if (e.target.classList.contains('modal-overlay')) {
+        // check if they clicked outside the modal (in the overlay)
+        if (e.target.classList.contains('modal-overlay')) {
                 e.target.style.display = 'none';
                 const form = e.target.querySelector('form');
-                if (form) { form.reset(); }
+                if (form) { form.reset(); } //reset
             }
         });
     </script>

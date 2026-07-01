@@ -25,8 +25,8 @@ try{
 }
 catch (PDOException $e) {
     //if it off wake up db
-    $api_token   = getenv('AIVEN_API_TOKEN');
-    $project     = getenv('AIVEN_PROJECT_NAME');
+    $api_token= getenv('AIVEN_API_TOKEN');
+    $project= getenv('AIVEN_PROJECT_NAME');
     $serviceName = "mysql-29bc9beb";
 
     if ($api_token && $project) { //check for good creds 
@@ -59,7 +59,7 @@ catch (PDOException $e) {
         
         //Debugging
         //echo "<hr>";
-        //echo "<h3>Raw Aiven API Response Server Feedback:</h3>";
+        //echo "<h3>Aiven API Response Server Feedback:</h3>";
         //echo "<pre>" . htmlspecialchars($response) . "</pre>";
         //exit();
 

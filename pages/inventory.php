@@ -290,33 +290,39 @@ try {
     }
 
     //general modal things. what to do when clicking where stuff
+    // open modal when trigger button is clicked
+    //find all buttons to open first
     document.querySelectorAll('.action-btn-trigger').forEach(button => {
         button.addEventListener('click', () => {
+            //close all modals before opening
             document.querySelectorAll('.modal-overlay').forEach(modal => {
-                modal.style.display = 'none';
+                modal.style.display = 'none';//hide
                 const form = modal.querySelector('form');
-                if (form) { form.reset(); }
+                if (form) { form.reset(); } //reset fields
             });
-
+            // show the targeted modal by id
             const targetId = button.getAttribute('data-target');
             document.getElementById(targetId).style.display = 'block';
         });
     });
 
+    // close modal when close button is clicked
     document.querySelectorAll('.modal-close-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const modal = e.target.closest('.modal-overlay');
-            modal.style.display = 'none';
+            modal.style.display = 'none'; //hide
             const form = modal.querySelector('form');
-            if (form) { form.reset(); }
+            if (form) { form.reset(); } //clear any form data when closing
         });
     });
 
+    // close modal when clicking outside the modal content
     window.addEventListener('click', (e) => {
+        // check if they clicked outside the modal (in the overlay)
         if (e.target.classList.contains('modal-overlay')) {
-            e.target.style.display = 'none';
+            e.target.style.display = 'none'; //hide
             const form = e.target.querySelector('form');
-            if (form) { form.reset(); }
+            if (form) { form.reset(); } //clear
         }
     });
 </script>

@@ -22,15 +22,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //validate make sure nothing req is being made empty
     if ($recipient_id > 0 && !empty($first_name) && !empty($last_name) && $age > 0 && !empty($contact)) {
         try {
-            $sql = "update recipients set 
-                        first_name = :first_name, 
-                        last_name = :last_name, 
-                        age = :age, 
-                        guardian_fname = :guardian_fname, 
-                        guardian_lname = :guardian_lname, 
-                        contact= :contact, 
-                        allergies = :allergies 
-                    where recipient_id = :recipient_id";
+            $sql = "update recipients set first_name = :first_name, last_name = :last_name, age = :age, 
+                guardian_fname = :guardian_fname, guardian_lname = :guardian_lname, contact= :contact, allergies = :allergies 
+                where recipient_id = :recipient_id";
+                
             //execute the satement
             $stmt = $pdo->prepare($sql);
             $stmt->execute([

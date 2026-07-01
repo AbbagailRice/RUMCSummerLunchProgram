@@ -26,7 +26,7 @@
     }
 
     *, *:before, *:after {
-        box-sizing: inherit; /* fix overflow please*/
+        box-sizing: inherit; /* fix overflow please please please */
     }
 
 /* header styling */
@@ -63,9 +63,8 @@
 
     .logo-header h1 {
         margin: 0;
-        font-size: 2.2rem;
+        font-size: 2rem;
         font-weight: 700;
-        line-height: 1.1;
         text-transform: uppercase; /* make uppercase */
         letter-spacing: 0.5px; /* even spacing */
         font-family: 'Arial', sans-serif;
