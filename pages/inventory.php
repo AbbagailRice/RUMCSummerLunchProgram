@@ -64,9 +64,15 @@ try {
         <?php include '../includes/header.php'; ?>
 
         <div class="workspace-container">
-            <div class="manage-workspace">
-                
+            <div class="manage-workspace">   
+
                 <div class="recipient-actions-grid">
+
+                    <div class="search-container">
+                        <label for="tableSearch">Search Inventory: </label>
+                        <input type="text" id="tableSearch" placeholder="Type an item name..." onkeyup="filterTable()" style="padding: 6px; width: 250px; margin-bottom: 15px;">
+                    </div> 
+                    
                     <button type="button" class="action-btn-trigger" data-target="addInventoryModal">
                         <div class="action-item-box">
                             <span class="action-icon">+</span><br>
@@ -82,10 +88,6 @@ try {
                     </button>
                 </div>
                 
-                <div class="search-container">
-                    <label for="tableSearch">Search Inventory: </label>
-                    <input type="text" id="tableSearch" placeholder="Type an item name..." onkeyup="filterTable()" style="padding: 6px; width: 250px; margin-bottom: 15px;">
-                </div>
 
                 <div class="recipent-table-container">
                     <?php 

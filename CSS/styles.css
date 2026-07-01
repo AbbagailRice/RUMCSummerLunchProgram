@@ -169,7 +169,7 @@
 
     .dashboard-workspace {
         align-items: center;
-        justify-content: center;
+        
     }
 
 
@@ -194,6 +194,20 @@
         color: var(--color-white);
     }
 
+/*add remove button on recipient and inventory management*/
+    .recipient-actions-grid {
+        display: flex;
+        flex-direction: row;/* aligns children horizontally */
+        align-items: center; /* centers vertically to each other*/
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+
+    .recipient-actions-grid .search-container {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
 
 
 /*for mobile and tablets and such*/

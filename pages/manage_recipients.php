@@ -51,6 +51,7 @@ try {
             right: 15px;
             top: 10px;
         }
+        
     </style>
     <link rel="stylesheet" type="text/css" href="../CSS/styles.css">
     <link rel="stylesheet" type="text/css" href="../CSS/table.css">
@@ -65,7 +66,12 @@ try {
         <div class="workspace-container">
             <div class ="manage-workspace">
                 <div class="recipient-actions-grid">
-                    
+
+                    <div class="search-container">
+                        <label for="tableSearch">Search Recipients: </label>
+                        <input type="text" id="tableSearch" placeholder="Type a name, phone, or allergy..." onkeyup="filterTable()" style="padding: 6px; width: 250px; margin-bottom: 15px;">
+                    </div>
+
                     <button type="button" class="action-btn-trigger" data-target="addModal">
                         <div class="action-item-box">
                             <span class="action-icon">+</span><br>
@@ -80,11 +86,6 @@ try {
                         </div>
                     </button>
                     
-                </div>
-                
-                <div class="search-container">
-                        <label for="tableSearch">Search Recipients: </label>
-                        <input type="text" id="tableSearch" placeholder="Type a name, phone, or allergy..." onkeyup="filterTable()" style="padding: 6px; width: 250px; margin-bottom: 15px;">
                 </div>
 
                 <div class ="recipent-table-container">
