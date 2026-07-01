@@ -172,6 +172,32 @@
         justify-content: center;
     }
 
+    .btn-logout {
+    display: inline-block;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 700;
+
+    text-align: center;
+    text-decoration: none;
+
+    box-sizing: border-box;
+    transition: background-color 0.2s ease;
+
+    font-family: 'Arial', sans-serif;
+    margin-top: auto;
+}
+
+.btn-logout {
+    background-color: var(--color-primary-scarlet);
+    color: var(--color-white);
+}
+
+.btn-logout:hover {
+    background-color: #980019;
+}
 
 
 

@@ -27,4 +27,9 @@
             Inventory
         </a>
     </div>
+
+    <a href="../services/logout.php" class="btn-logout">
+        Logout
+    </a>
+    
 </nav>
