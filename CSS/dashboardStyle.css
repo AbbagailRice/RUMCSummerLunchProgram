@@ -27,12 +27,13 @@
 .metric-card {
     flex: 1;
     background-color: var(--color-white);
-    border: none;
+    border: 3px solid var(--color-dim-grey);
     border-radius: 12px;
     padding: 20px;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
     box-sizing: border-box;
+    margin-top: 20px; 
 }
 
 .metric-card h3 {

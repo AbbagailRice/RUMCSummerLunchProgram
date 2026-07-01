@@ -1,5 +1,6 @@
 <?php
     //start the session
+    date_default_timezone_set('America/New_York'); // for some reason we in utc so i correct
     session_start();
 
     //make sure the session var is set.
