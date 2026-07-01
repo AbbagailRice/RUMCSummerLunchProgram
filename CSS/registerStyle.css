@@ -18,13 +18,14 @@
 .body {
     font-family: 'Arial', sans-serif;
 }
+
 .register-container form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 5px 10px;
     align-items: center;
-    margin-top: 3px;
+    margin: 3px auto 0 auto;
 }
 
 .register-container input[type="text"],
