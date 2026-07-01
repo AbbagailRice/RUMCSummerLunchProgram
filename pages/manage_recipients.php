@@ -51,7 +51,7 @@ try {
             right: 15px;
             top: 10px;
         }
-        
+
     </style>
     <link rel="stylesheet" type="text/css" href="../CSS/styles.css">
     <link rel="stylesheet" type="text/css" href="../CSS/table.css">
@@ -69,7 +69,7 @@ try {
 
                     <div class="search-container">
                         <label for="tableSearch">Search Recipients: </label>
-                        <input type="text" id="tableSearch" placeholder="Type a name, phone, or allergy..." onkeyup="filterTable()" style="padding: 6px; width: 250px; margin-bottom: 15px;">
+                        <input type="text" id="tableSearch" placeholder="Type a name, phone, or allergy..." onkeyup="filterTable()" style="padding: 6px; width: 250px;">
                     </div>
 
                     <button type="button" class="action-btn-trigger" data-target="addModal">

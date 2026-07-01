@@ -70,9 +70,9 @@ try {
 
                     <div class="search-container">
                         <label for="tableSearch">Search Inventory: </label>
-                        <input type="text" id="tableSearch" placeholder="Type an item name..." onkeyup="filterTable()" style="padding: 6px; width: 250px; margin-bottom: 15px;">
+                        <input type="text" id="tableSearch" placeholder="Type an item name..." onkeyup="filterTable()" style="padding: 6px; width: 250px; ">
                     </div> 
-                    
+
                     <button type="button" class="action-btn-trigger" data-target="addInventoryModal">
                         <div class="action-item-box">
                             <span class="action-icon">+</span><br>
