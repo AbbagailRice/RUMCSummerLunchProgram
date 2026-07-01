@@ -50,7 +50,7 @@
 
             <div class ="workspace-container">
                 <div class ="dashboard-workspace">
-                    <h2>Welcome to the Dashboard! It is <span class="dashboard-date"><?php echo date('l, F j'); ?></span></h2>
+                    <h2>Welcome to the Dashboard! It is <span class="dashboard-date"><?php echo date('l, F j'); ?>.</span></h2>
                     <div class="metrics-grid">
                         <div class="metric-card">
                             <h3>Previous Day</h3>
