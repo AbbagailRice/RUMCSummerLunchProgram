@@ -65,7 +65,7 @@ try {
 
         <div class="workspace-container">
             <div class="manage-workspace">   
-
+                <h3>Manage Inventory</h3>
                 <div class="recipient-actions-grid">
 
                     <div class="search-container">
