@@ -42,9 +42,9 @@
         <?php include '../includes/header.php'; ?>
         
         <div class="admin-container">
-            <h2> ADMIN</h2>
             
             <div class="pending-container">
+                <h2> ADMIN DASHBOARD</h2>
                 <h3> Pending Volunteer Account Approvals</h3>
 
                 <!--//check if there are none-->
