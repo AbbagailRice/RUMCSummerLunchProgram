@@ -3,6 +3,7 @@
 <head>
     <title> Summer Lunch Program Register Page </title>
     <link rel="stylesheet" type="text/css" href="../CSS/styles.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/registerStyle.css">
 </head>
 
 <body>
