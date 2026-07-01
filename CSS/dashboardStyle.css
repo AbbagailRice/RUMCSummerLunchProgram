@@ -1,0 +1,47 @@
+:root {
+    /* base colors */
+    --color-black: #000000;
+    --color-dim-grey: #5d6769;
+    --color-white: #ffffff;
+    
+    /* lights */
+    --color-pale-sky: #bfd7ea;
+    --color-dry-sage: #b6c69d;
+    
+    /* reds and pinks */
+    --color-cotton-rose: #fdd1d3;
+    --color-cotton-candy: #fda6a9;
+    --color-vibrant-coral: #ff5a5f;
+    --color-primary-scarlet: #e50027;
+}
+
+.metrics-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+}
+
+.metric-card {
+    flex: 1;
+    background-color: var(--color-cotton-candy);
+    border: 1px solid var(--color-vibrant-coral);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+}
+
+.metric-card h3 {
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+}
+
+.metric-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}

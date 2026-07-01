@@ -40,6 +40,7 @@
 <head>
     <title> Summer Lunch Program Dashboard </title>
     <link rel="stylesheet" type="text/css" href="../CSS/styles.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/dashboardStyle.css">
 </head>
 
 <body>
