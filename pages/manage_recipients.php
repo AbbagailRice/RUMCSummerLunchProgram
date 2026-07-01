@@ -99,8 +99,8 @@ try {
                     <table class="recipient-table" id="recipientTable">
                         <thead>
                             <tr>
-                                <th>First Name</th>
                                 <th>Last Name</th>
+                                <th>First Name</th>
                                 <th>Age</th>
                                 <th>Allergies</th>
                                 <th>Primary Guardian</th>
@@ -122,8 +122,8 @@ try {
                                         if ($guardian === '') { $guardian = "<em>None listed</em>"; }
 
                                         echo "<tr class='table-row'>";
-                                        echo "<td class='cell-fname'>" . htmlspecialchars($Row['first_name']) . "</td>";
                                         echo "<td class='cell-lname'>" . htmlspecialchars($Row['last_name']) . "</td>";
+                                        echo "<td class='cell-fname'>" . htmlspecialchars($Row['first_name']) . "</td>";
                                         echo "<td class='cell-age'>" . htmlspecialchars($Row['age']) . "</td>";
                                         echo "<td class='cell-allergies'>" . htmlspecialchars($Row['allergies'] ?? '') . "</td>";
                                         echo "<td class='cell-guardian'>" . $guardian . "</td>";
