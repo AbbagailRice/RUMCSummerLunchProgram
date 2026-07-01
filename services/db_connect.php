@@ -38,7 +38,7 @@ catch (PDOException $e) {
         $ch = curl_init($url);
 
         //config rules of the connection
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT"); //POST for changing something not getting
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT"); //PUTS for changing something not getting
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // get the answer from avien back but dont display it save as var
         
         //pass the details
