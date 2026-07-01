@@ -50,7 +50,7 @@
 
             <div class ="workspace-container">
                 <div class ="dashboard-workspace">
-                    <h2>Welcome to the Dashboard!</h2>
+                    <h2>Welcome to the Dashboard! It is <span class="dashboard-date"><?php echo date('l, F j'); ?></span></h2>
                     <div class="metrics-grid">
                         <div class="metric-card">
                             <h3>Previous Day</h3>
@@ -70,8 +70,6 @@
                             <p>Lunches Served</p>
                         </div>
                     </div>
-
-                    <p>This is the dashboard page.</p>
 
                     <a href="../services/logout.php" class="btn-logout">
                         Logout

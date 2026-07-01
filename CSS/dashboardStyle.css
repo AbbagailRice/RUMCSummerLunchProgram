@@ -27,7 +27,7 @@
 .metric-card {
     flex: 1;
     background-color: var(--color-cotton-candy);
-    border: 1px solid var(--color-vibrant-coral);
+    border: 3px solid var(--color-vibrant-coral);
     border-radius: 12px;
     padding: 20px;
     text-align: center;
@@ -44,4 +44,31 @@
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 5px;
+}
+
+.btn-logout {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 700;
+
+    text-align: center;
+    text-decoration: none;
+
+    box-sizing: border-box;
+    transition: background-color 0.2s ease;
+
+    font-family: 'Arial', sans-serif;
+}
+
+.btn-logout {
+    background-color: var(--color-primary-scarlet);
+    color: var(--color-white);
+}
+
+.btn-logout:hover {
+    background-color: #c70020;
 }

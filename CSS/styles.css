@@ -167,6 +167,10 @@
         overflow-y: auto;
     }
 
+    .dashboard-workspace {
+        align-items: center;
+    }
+
 
 
 
