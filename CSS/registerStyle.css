@@ -19,8 +19,8 @@
     font-family: 'Arial', sans-serif;
 }
 .register-container form {
-    display: grid;
-    grid-template-columns: max-content 300px;
+    display: flex;
+    flex-direction: column;
     gap: 15px 20px;
     align-items: center;
     margin-top: 20px;
