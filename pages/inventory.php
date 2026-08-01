@@ -140,7 +140,7 @@ try {
 
             </div>
         </div>
-    </main>here is inven
+    </main>
 
     <?php include '../includes/sidebar.php'; ?>
 

@@ -52,7 +52,7 @@ require_once '../services/db_connect.php';
                 </div>
 
                 <div class="menu-table-container">
-                    <table class="menu-table">
+                    <table class="recipient-table">
                         <thead>
                             <tr>
                                 <th></th>
