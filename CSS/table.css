@@ -16,7 +16,7 @@
 }
 
 /*table styling*/
-.attendance-table, .admin-table, .recipient-table, .menu-table-container {
+.attendance-table, .admin-table, .recipient-table, .menu-table {
     width: 100%;
     border-collapse: collapse; /* only want one border*/
     border-radius: 6px;
@@ -27,7 +27,7 @@
 }
 
 /* the header cells */
-.attendance-table th, .admin-table th, .recipient-table th, .menu-table-container th {
+.attendance-table th, .admin-table th, .recipient-table th, .menu-table th {
     background-color: var(--color-vibrant-coral);
     color: var(--color-white);
     font-weight: 600;
@@ -37,7 +37,7 @@
 }
 
 /* other cells */
-.attendance-table td, .admin-table td, .recipient-table td, .menu-table-container td {
+.attendance-table td, .admin-table td, .recipient-table td, .menu-table td {
     padding: 10px 15px;
     border: 3px solid var(--color-dim-grey)
 }

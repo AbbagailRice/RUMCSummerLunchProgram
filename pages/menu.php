@@ -35,16 +35,16 @@ require_once '../services/db_connect.php';
 
                 <div class="menu-actions-grid">
 
-                    <button type="button" id="generateMenuBtn">
-                        <div class="action-item-box">
-                            <span class="action-icon">&#9881;</span><br>
-                            <span class="action-label">Generate Menu</span>
-                        </div>
-                    </button>
+                    <form action="../services/generate_menu.php" method="post">
+                        <button type="submit">
+                            <div class="action-item-box">
+                                <span class="action-label">Generate Menu</span>
+                            </div>
+                        </button>
+                    </form>
 
                     <button type="button" id="clearMenuBtn">
                         <div class="action-item-box">
-                            <span class="action-icon">&#10006;</span><br>
                             <span class="action-label">Clear</span>
                         </div>
                     </button>
@@ -52,7 +52,7 @@ require_once '../services/db_connect.php';
                 </div>
 
                 <div class="menu-table-container">
-                    <table class="recipient-table">
+                    <table class="menu-table">
                         <thead>
                             <tr>
                                 <th></th>
