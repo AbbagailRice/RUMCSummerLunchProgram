@@ -28,6 +28,13 @@
         </a>
     </div>
 
+    <div class="nav-item">
+        <a href="../pages/menu.php">
+            <span class="nav-icon">🍴</span><br>
+            Menu
+        </a>
+    </div>
+
     <a href="../services/logout.php" class="btn-logout">
         Logout
     </a>

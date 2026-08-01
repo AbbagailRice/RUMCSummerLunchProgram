@@ -203,7 +203,7 @@
         margin-bottom: 15px;
     }
 
-    .recipient-actions-grid .search-container {
+    .recipient-actions-grid .search-container .menu-actions-grid {
         display: flex;
         align-items: center;
         gap: 5px;

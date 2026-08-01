@@ -15,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $item_name = trim($_POST['item_name'] ?? '');
     $quantity = isset($_POST['quantity']) ? trim($_POST['quantity']) : '';
     $expire_date = trim($_POST['expire_date'] ?? '');
+    $category = trim($_POST['category'] ?? '');
 
     // if no check box default to 0
     $shelf_stable = isset($_POST['shelf_stable']) ? 1 : 0;
@@ -25,10 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // make sure req fields arent empty
-    if ($item_id > 0 && !empty($item_name) && $quantity !== '') {
+    if ($item_id > 0 && !empty($item_name) && $quantity !== '' && !empty($category)) {
         try {
             $sql = "update inventory set item_name = :item_name, quantity = :quantity, 
-                expire_date = :expire_date, shelf_stable = :shelf_stable where item_id = :item_id";
+                expire_date = :expire_date, shelf_stable = :shelf_stable, category = :category where item_id = :item_id";
                     
             // execute the statement securely
             $stmt = $pdo->prepare($sql);
@@ -37,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'quantity'=> $quantity,
                 'expire_date'=> $expire_date,
                 'shelf_stable'=> $shelf_stable,
+                'category' => $category,
                 'item_id'=> $item_id
             ]);
 

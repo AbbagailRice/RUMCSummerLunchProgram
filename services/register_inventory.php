@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $item_name = trim($_POST['item_name']);
     $quantity = trim($_POST['quantity']);
     $expire_date = trim($_POST['expire_date']);
+    $category = trim($_POST['category'] ?? '');
     
     // if no check box default to 0
     $shelf_stable = isset($_POST['shelf_stable']) ? 1 : 0;
@@ -24,12 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // make sure req fields arent empty
-    if (!empty($item_name) && $quantity !== '') {
+    if (!empty($item_name) && $quantity !== '' && !empty($category)) {
         
         //go ahead and try to nsert everything
         try {
-            $sqlString = "insert into inventory (item_name, quantity, expire_date, shelf_stable) 
-                values (:item_name, :quantity, :expire_date, :shelf_stable)";
+            $sqlString = "insert into inventory (item_name, quantity, expire_date, shelf_stable, category) 
+                values (:item_name, :quantity, :expire_date, :shelf_stable, :category)";
             
             // execute
             $stmt = $pdo->prepare($sqlString);
@@ -37,7 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'item_name'=> $item_name,
                 'quantity' => $quantity,
                 'expire_date' => $expire_date,
-                'shelf_stable' => $shelf_stable
+                'shelf_stable' => $shelf_stable,
+                'category' => $category
             ]);
 
             // done go back

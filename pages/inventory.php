@@ -13,7 +13,7 @@ $error_msg = null;
 
 try {
     // get the inventory
-    $stmt = $pdo->prepare("select item_id, item_name, quantity, expire_date, shelf_stable from inventory order by item_name asc");
+    $stmt = $pdo->prepare("select item_id, item_name, quantity, expire_date, shelf_stable, category from inventory order by item_name asc");
     $stmt->execute();
 } catch (PDOException $e) {
     $error_msg = "Could not load inventory data.";
@@ -103,6 +103,7 @@ try {
                                 <th>Quantity</th>
                                 <th>Expiration Date</th>
                                 <th>Shelf Stable</th>
+                                <th>Category</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -123,6 +124,7 @@ try {
                                         echo "<td class='cell-age'>" . htmlspecialchars($row['quantity']) . "</td>";
                                         echo "<td class='cell-allergies'>" . $display_date . "</td>";
                                         echo "<td class='cell-contact'>" . $stable_text . "</td>";
+                                        echo "<td>" . htmlspecialchars($row['category'] ?? '') . "</td>";
                                         
                                         // the edit action
                                         echo "<td class='cell-action'>";
@@ -138,7 +140,7 @@ try {
 
             </div>
         </div>
-    </main>
+    </main>here is inven
 
     <?php include '../includes/sidebar.php'; ?>
 
@@ -168,6 +170,20 @@ try {
             <div class="form-options checkbox-container">
                 <input type="checkbox" name="shelf_stable" id="add_shelf_stable" value="1">
                 <label for="add_shelf_stable">This item is shelf stable</label>
+            </div>
+            <br>
+            <div class="form-options">
+                <label for="add_category">Category *</label><br>
+                <select name="category" id="add_category" required>
+                    <option value="">Select a category</option>
+                    <option value="sandwich">Sandwich</option>
+                    <option value="sweet">Sweet</option>
+                    <option value="salty">Salty</option>
+                    <option value="fruit">Fruit</option>
+                    <option value="vegetable">Vegetable</option>
+                    <option value="dairy">Dairy</option>
+                    <option value="drink">Drink</option>
+                </select>
             </div>
             <br>
             <button type="submit">Add to Inventory</button>
@@ -244,6 +260,20 @@ try {
                 <label for="edit_shelf_stable">This item is shelf stable</label>
             </div>
             <br>
+            <div class="form-options">
+                <label for="edit_category">Category *</label><br>
+                <select name="category" id="edit_category" required>
+                    <option value="">Select a category</option>
+                    <option value="sandwich">Sandwich</option>
+                    <option value="sweet">Sweet</option>
+                    <option value="salty">Salty</option>
+                    <option value="fruit">Fruit</option>
+                    <option value="vegetable">Vegetable</option>
+                    <option value="dairy">Dairy</option>
+                    <option value="drink">Drink</option>
+                </select>
+            </div>
+            <br>
             <button type="submit">Save Details</button>
         </form>
     </div>
@@ -283,6 +313,7 @@ try {
         document.getElementById('edit_item_name').value = itemData.item_name;
         document.getElementById('edit_quantity').value = itemData.quantity;
         document.getElementById('edit_expire_date').value = itemData.expire_date ?? '';
+        document.getElementById('edit_category').value =itemData.category ?? '';
         
         // Handle boolean checkbox state accurately (1 = checked, 0 = unchecked)
         document.getElementById('edit_shelf_stable').checked = parseInt(itemData.shelf_stable) === 1;
