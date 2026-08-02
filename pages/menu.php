@@ -34,8 +34,18 @@ require_once '../services/db_connect.php';
                 <h3>Generate Weekly Menu</h3>
 
                 <div class="menu-actions-grid">
-
                     <form action="../services/generate_menu.php" method="post">
+                        <div class="form-options">
+                            <label for="estimated_recipients">Estimated Recipients *</label><br>
+                            <input
+                                type="number"
+                                name="estimated_recipients"
+                                id="estimated_recipients"
+                                min="1"
+                                required
+                            >
+                        </div>
+                        <br>
                         <button type="submit">
                             <div class="action-item-box">
                                 <span class="action-label">Generate Menu</span>
