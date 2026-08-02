@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->execute();
 
         $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        temporary test
+        //temporary test
         echo "<pre>";
         print_r($inventory);
         echo "</pre>";
