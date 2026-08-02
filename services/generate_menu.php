@@ -7,9 +7,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ? (int)$_POST['estimated_recipients']
         : 0;
 
-    if ($estimated_recipients <= 0) {
-        die("Error: Please enter a valid estimated recipient total.");
-    }
+    //if ($estimated_recipients <= 0) {
+    //    die("Error: Please enter a valid estimated recipient total.");
+    //}
 
     try {
         $stmt = $pdo->prepare("select item_id, item_name, quantity, expire_date, shelf_stable, category
@@ -26,10 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->execute();
 
         $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        // temporary test
-        // echo "<pre>";
-        // print_r($inventory);
-        // echo "</pre>";
+        temporary test
+        echo "<pre>";
+        print_r($inventory);
+        echo "</pre>";
 
         // convert inventory to json
         $inventory_json = json_encode($inventory, JSON_PRETTY_PRINT);
@@ -150,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             //test
             $full_prompt = "Reply with only the word hello.";
-            
+
             //$full_prompt = $system_prompt . "Current inventory:" . $inventory_json;
             
             // get gemini api key from render
