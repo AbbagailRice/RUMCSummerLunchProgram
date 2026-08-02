@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->execute();
         $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        if no inventory items are available, return an error
+        //if no inventory items are available, return an error
         if (empty($inventory)) {
             die("Error: There are no available inventory items.");
         }
