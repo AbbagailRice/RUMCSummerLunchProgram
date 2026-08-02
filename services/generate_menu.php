@@ -7,9 +7,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ? (int)$_POST['estimated_recipients']
         : 0;
 
-    //if ($estimated_recipients <= 0) {
-    //    die("Error: Please enter a valid estimated recipient total.");
-    //}
+    if ($estimated_recipients <= 0) {
+        die("Error: Please enter a valid estimated recipient total.");
+    }
 
     try {
         $stmt = $pdo->prepare("select item_id, item_name, quantity, expire_date, shelf_stable, category
@@ -19,9 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ");//shelf stable stuff to be used last thats why order by expire is null
         
         //if no inventory items are available, return an error
-        if (empty($inventory)) {
-            die("Error: There are no available inventory items.");
-        }
+        //if (empty($inventory)) {
+        //    die("Error: There are no available inventory items.");
+        //}
 
         $stmt->execute();
 
