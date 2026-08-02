@@ -17,19 +17,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             where quantity > 0
             order by expire_date is null, expire_date asc, item_name asc 
         ");//shelf stable stuff to be used last thats why order by expire is null
-        
-        //if no inventory items are available, return an error
-        //if (empty($inventory)) {
-        //    die("Error: There are no available inventory items.");
-        //}
+
 
         $stmt->execute();
-
         $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if no inventory items are available, return an error
+        if (empty($inventory)) {
+            die("Error: There are no available inventory items.");
+        }
+
         //temporary test
-        echo "<pre>";
-        print_r($inventory);
-        echo "</pre>";
+        //echo "<pre>";
+        //print_r($inventory);
+        //echo "</pre>";
 
         // convert inventory to json
         $inventory_json = json_encode($inventory, JSON_PRETTY_PRINT);
@@ -161,7 +162,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
 
             // gemini url
-            $api_url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
+            $api_url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent";
 
             // build request payload
             $payload = [
