@@ -150,9 +150,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ";
             
             //test
-            $full_prompt = "Reply with only the word hello.";
+            //$full_prompt = "Reply with only the word hello.";
 
-            //$full_prompt = $system_prompt . "Current inventory:" . $inventory_json;
+            $full_prompt = $system_prompt . "Current inventory:" . $inventory_json;
             
             // get gemini api key from render
             $api_key = getenv('GEMINI_API_KEY');
