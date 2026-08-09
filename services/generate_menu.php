@@ -72,9 +72,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             salty
             - chips, crackers, pretzels, etc.
+            
+            Quantity and serving rules:
+            - quantities in inventory represent the amount currently available, but package sizes may not equal individual servings
+            - do not assume that one bag, one tub, one jar, or one pound equals one serving
+            - use known conversion rules when they are provided
+            - bread rule: one loaf makes 12 sandwiches
+            - for individually portioned items such as juice boxes, yogurt cups, string cheese, cookies, peach cups, or individually packaged chips, use one item per recipient unless the inventory name indicates otherwise
+            - for bulk items such as bags of carrots, celery, grapes by the pound, meat by the pound, peanut butter jars, jelly jars, or large tubs of snacks, estimate a reasonable amount needed for the group rather than assigning one package per recipient
+            - when estimating bulk quantities, use practical whole or decimal quantities and avoid obviously excessive amounts
+            - if an exact serving conversion cannot be determined from the inventory name, make a conservative estimate
 
             When creating a sandwich:
-            - each bread loaf can make 12 sandwiches.
             - combine compatible ingredients from the sandwich category.
             - for example, bread + ham + cheese = ham and cheese sandwich.
             - bread + peanut butter + jelly = peanut butter and jelly sandwich.
@@ -88,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             - track the total use of each inventory item across all five days
             - do not treat the available quantity as available again for each new day
             - never exceed the total available quantity across the entire week
-            - calculate ingredient quantities for {$estimated_recipients} recipients per day
+            - calculate realistic ingredient quantities needed to serve {$estimated_recipients} recipients per day
             - prioritize using items with the closest expiration dates first
             - use shelf stable items whenever they are appropriate
             - do not use more than the available quantity of any inventory item
