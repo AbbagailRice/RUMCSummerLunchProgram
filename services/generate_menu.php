@@ -213,10 +213,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             curl_close($ch);
 
             // temporary test
-            echo "<p>HTTP Status: " . htmlspecialchars((string)$http_code) . "</p>";
+            //echo "<p>HTTP Status: " . htmlspecialchars((string)$http_code) . "</p>";
+            //echo "<pre>";
+            //echo htmlspecialchars($response);
+            //echo "</pre>";
+
+            // decode gemini resp
+            $response_data = json_decode($response, true);
+
+            if ($response_data === null) {
+                die("Error: Could not decode Gemini response.");
+            }
+
+            // get the menu json text
+            $menu_json = $response_data['candidates'][0]['content']['parts'][0]['text'] ?? null;
+
+            if (!$menu_json) {
+                die("Error: Gemini did not return menu data.");
+            }
+
+            // decode
+            $menu_data = json_decode($menu_json, true);
+
+            if ($menu_data === null) {
+                die("Error: Could not decode generated menu.");
+            }
+
+            // temporary test
             echo "<pre>";
-            echo htmlspecialchars($response);
+            print_r($menu_data);
             echo "</pre>";
+            exit();
 
         } catch (PDOException $e) {
             die("Error: Could not load inventory data.");
