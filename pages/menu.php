@@ -8,6 +8,47 @@ if(!isset($_SESSION['volunteer_id'])){
 }
 
 require_once '../services/db_connect.php';
+$menu_data = [];
+
+//if a generated week is here
+if (isset($_GET['week_start'])) {
+
+    $week_start = $_GET['week_start'];
+
+    // get friday
+    $week_end = date(
+        'Y-m-d',
+        strtotime($week_start . ' +4 days')
+    );
+
+    try {
+
+        $stmt = $pdo->prepare("
+            select
+                m.menu_date,
+                mi.category,
+                mi.menu_item_name
+            from menu m
+            join menu_items mi
+                on m.menu_id = mi.menu_id
+            where m.menu_date between :week_start and :week_end
+            order by m.menu_date asc
+        ");
+
+        $stmt->execute([
+            'week_start' => $week_start,
+            'week_end' => $week_end
+        ]);
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $menu_data[$row['menu_date']][$row['category']]
+                = $row['menu_item_name'];
+        }
+
+    } catch (PDOException $e) {
+        $error_msg = "Could not load generated menu.";
+    }
+}
 ?>
 
 <!DOCTYPE HTML>
@@ -77,65 +118,127 @@ require_once '../services/db_connect.php';
                         <tbody>
                             <tr>
                                 <th>Sandwich</th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <?php
+                                for ($i = 0; $i < 5; $i++) {
+                                    $date = date(
+                                        'Y-m-d',
+                                        strtotime($week_start . " +{$i} days")
+                                    );
+
+                                    echo "<td>" .
+                                        htmlspecialchars(
+                                            $menu_data[$date]['sandwich'] ?? ''
+                                        ) .
+                                        "</td>";
+                                }
+                                ?>
                             </tr>
 
-                            <tr>
+                           <tr>
                                 <th>Sweet</th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <?php
+                                for ($i = 0; $i < 5; $i++) {
+                                    $date = date(
+                                        'Y-m-d',
+                                        strtotime($week_start . " +{$i} days")
+                                    );
+                                    echo "<td>" .
+                                        htmlspecialchars(
+                                            $menu_data[$date]['sweet'] ?? ''
+                                        ) .
+                                        "</td>";
+                                }
+                                ?>
                             </tr>
 
                             <tr>
                                 <th>Salty</th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <?php
+                                for ($i = 0; $i < 5; $i++) {
+                                    $date = date(
+                                        'Y-m-d',
+                                        strtotime($week_start . " +{$i} days")
+                                    );
+
+                                    echo "<td>" .
+                                        htmlspecialchars(
+                                            $menu_data[$date]['salty'] ?? ''
+                                        ) .
+                                        "</td>";
+                                }
+                                ?>
                             </tr>
 
                             <tr>
                                 <th>Fruit</th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+
+                                <?php
+                                for ($i = 0; $i < 5; $i++) {
+                                    $date = date(
+                                        'Y-m-d',
+                                        strtotime($week_start . " +{$i} days")
+                                    );
+                                    echo "<td>" .
+                                        htmlspecialchars(
+                                            $menu_data[$date]['fruit'] ?? ''
+                                        ) .
+                                        "</td>";
+                                }
+                                ?>
                             </tr>
 
                             <tr>
                                 <th>Vegetable</th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <?php
+                                for ($i = 0; $i < 5; $i++) {
+                                    $date = date(
+                                        'Y-m-d',
+                                        strtotime($week_start . " +{$i} days")
+                                    );
+
+                                    echo "<td>" .
+                                        htmlspecialchars(
+                                            $menu_data[$date]['vegetable'] ?? ''
+                                        ) .
+                                        "</td>";
+                                }
+                                ?>
                             </tr>
 
                             <tr>
                                 <th>Dairy</th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <?php
+                                for ($i = 0; $i < 5; $i++) {
+                                    $date = date(
+                                        'Y-m-d',
+                                        strtotime($week_start . " +{$i} days")
+                                    );
+
+                                    echo "<td>" .
+                                        htmlspecialchars(
+                                            $menu_data[$date]['dairy'] ?? ''
+                                        ) .
+                                        "</td>";
+                                }
+                                ?>
                             </tr>
 
                             <tr>
                                 <th>Drink</th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <?php
+                                for ($i = 0; $i < 5; $i++) {
+                                    $date = date(
+                                        'Y-m-d',
+                                        strtotime($week_start . " +{$i} days")
+                                    );
+
+                                    echo "<td>" .
+                                        htmlspecialchars(
+                                            $menu_data[$date]['drink'] ?? ''
+                                        ) .
+                                        "</td>";
+                                }
+                                ?>
                             </tr>
                         </tbody>
                     </table>

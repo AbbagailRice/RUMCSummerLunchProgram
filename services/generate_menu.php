@@ -270,6 +270,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 (:menu_id, :item_id, :category, :menu_item_name, :req_quant, :unit)
             ");
 
+            // get first and last date of generated week
+            $week_start = $menu_data['days'][0]['menu_date'];
+            $week_end = $menu_data['days'][count($menu_data['days']) - 1]['menu_date'];
+
+            // remove old menu if making new one for the same week
+            $delete_week = $pdo->prepare("
+                delete from menu
+                where menu_date between :week_start and :week_end
+            ");
+
+            $delete_week->execute([
+                'week_start' => $week_start,
+                'week_end' => $week_end
+            ]);
+
             // go through each day
             foreach ($menu_data['days'] as $day) {
 
@@ -288,7 +303,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     $item_id = null;
 
-                    // if the menu item has only one inventory item,
+                    // if the menu item has only one inventory item
                     // link it directly to that inventory item
                     if (
                         count($item['ingredients']) === 1 &&
@@ -309,7 +324,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
             }
 
-            echo "Menu and menu items saved successfully.";
+            // go back with the gen week
+            header(
+                "Location: ../pages/menu.php?week_start=" .
+                urlencode($week_start)
+            );
             exit();
 
         } catch (PDOException $e) {
