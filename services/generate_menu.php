@@ -254,7 +254,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //echo "</pre>";
             //exit();
 
-            // insert each gen day into menu table
+            // prep menu insert
             $insert_menu = $pdo->prepare("
                 insert into menu
                 (menu_date, meal_name, estimated_recipients)
@@ -262,17 +262,54 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 (:menu_date, :meal_name, :estimated_recipients)
             ");
 
+            // prep menu item insert
+            $insert_menu_item = $pdo->prepare("
+                insert into menu_items
+                (menu_id, item_id, category, menu_item_name, req_quant, unit)
+                values
+                (:menu_id, :item_id, :category, :menu_item_name, :req_quant, :unit)
+            ");
+
+            // go through each day
             foreach ($menu_data['days'] as $day) {
 
+                // insert the daily menu
                 $insert_menu->execute([
                     'menu_date' => $day['menu_date'],
                     'meal_name' => $day['meal_name'],
                     'estimated_recipients' => $estimated_recipients
                 ]);
+
+                // get the id of the menu that was just inserted
+                $menu_id = $pdo->lastInsertId();
+
+                // go through each menu item for that day
+                foreach ($day['items'] as $item) {
+
+                    $item_id = null;
+
+                    // if the menu item has only one inventory item,
+                    // link it directly to that inventory item
+                    if (
+                        count($item['ingredients']) === 1 &&
+                        isset($item['ingredients'][0]['item_id'])
+                    ) {
+                        $item_id = $item['ingredients'][0]['item_id'];
+                    }
+
+                    // insert finished menu item
+                    $insert_menu_item->execute([
+                        'menu_id' => $menu_id,
+                        'item_id' => $item_id,
+                        'category' => $item['category'],
+                        'menu_item_name' => $item['menu_item_name'],
+                        'req_quant' => $estimated_recipients,
+                        'unit' => 'servings'
+                    ]);
+                }
             }
-            
-            //test
-            echo "Menu days saved successfully.";
+
+            echo "Menu and menu items saved successfully.";
             exit();
 
         } catch (PDOException $e) {
