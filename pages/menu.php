@@ -121,16 +121,23 @@ if (isset($_GET['week_start'])) {
                                 <th>Sandwich</th>
                                 <?php
                                 if ($week_start !== null) {
-                                    $date = date(
-                                        'Y-m-d',
-                                        strtotime($week_start . " +{$i} days")
-                                    );
+                                    for ($i = 0; $i < 5; $i++) {
+                                        $date = date(
+                                            'Y-m-d',
+                                            strtotime($week_start . " +{$i} days")
+                                        );
 
-                                    echo "<td>" .
-                                        htmlspecialchars(
-                                            $menu_data[$date]['sandwich'] ?? ''
-                                        ) .
-                                        "</td>";
+                                        echo "<td>" .
+                                            htmlspecialchars(
+                                                $menu_data[$date]['sandwich'] ?? ''
+                                            ) .
+                                            "</td>";
+                                    }
+                                } else {
+                                    // empty cells before a menu has been generated
+                                    for ($i = 0; $i < 5; $i++) {
+                                        echo "<td></td>";
+                                    }
                                 }
                                 ?>
                             </tr>
@@ -139,15 +146,23 @@ if (isset($_GET['week_start'])) {
                                 <th>Sweet</th>
                                 <?php
                                 if ($week_start !== null) {
-                                    $date = date(
-                                        'Y-m-d',
-                                        strtotime($week_start . " +{$i} days")
-                                    );
-                                    echo "<td>" .
-                                        htmlspecialchars(
-                                            $menu_data[$date]['sweet'] ?? ''
-                                        ) .
-                                        "</td>";
+                                    for ($i = 0; $i < 5; $i++) {
+                                        $date = date(
+                                            'Y-m-d',
+                                            strtotime($week_start . " +{$i} days")
+                                        );
+
+                                        echo "<td>" .
+                                            htmlspecialchars(
+                                                $menu_data[$date]['sweet'] ?? ''
+                                            ) .
+                                            "</td>";
+                                    }
+                                } else {
+                                    // empty cells before a menu has been generated
+                                    for ($i = 0; $i < 5; $i++) {
+                                        echo "<td></td>";
+                                    }
                                 }
                                 ?>
                             </tr>
@@ -156,16 +171,23 @@ if (isset($_GET['week_start'])) {
                                 <th>Salty</th>
                                 <?php
                                 if ($week_start !== null) {
-                                    $date = date(
-                                        'Y-m-d',
-                                        strtotime($week_start . " +{$i} days")
-                                    );
+                                    for ($i = 0; $i < 5; $i++) {
+                                        $date = date(
+                                            'Y-m-d',
+                                            strtotime($week_start . " +{$i} days")
+                                        );
 
-                                    echo "<td>" .
-                                        htmlspecialchars(
-                                            $menu_data[$date]['salty'] ?? ''
-                                        ) .
-                                        "</td>";
+                                        echo "<td>" .
+                                            htmlspecialchars(
+                                                $menu_data[$date]['salty'] ?? ''
+                                            ) .
+                                            "</td>";
+                                    }
+                                } else {
+                                    // empty cells before a menu has been generated
+                                    for ($i = 0; $i < 5; $i++) {
+                                        echo "<td></td>";
+                                    }
                                 }
                                 ?>
                             </tr>
@@ -175,15 +197,23 @@ if (isset($_GET['week_start'])) {
 
                                 <?php
                                 if ($week_start !== null) {
-                                    $date = date(
-                                        'Y-m-d',
-                                        strtotime($week_start . " +{$i} days")
-                                    );
-                                    echo "<td>" .
-                                        htmlspecialchars(
-                                            $menu_data[$date]['fruit'] ?? ''
-                                        ) .
-                                        "</td>";
+                                    for ($i = 0; $i < 5; $i++) {
+                                        $date = date(
+                                            'Y-m-d',
+                                            strtotime($week_start . " +{$i} days")
+                                        );
+
+                                        echo "<td>" .
+                                            htmlspecialchars(
+                                                $menu_data[$date]['fruit'] ?? ''
+                                            ) .
+                                            "</td>";
+                                    }
+                                } else {
+                                    // empty cells before a menu has been generated
+                                    for ($i = 0; $i < 5; $i++) {
+                                        echo "<td></td>";
+                                    }
                                 }
                                 ?>
                             </tr>
@@ -192,16 +222,23 @@ if (isset($_GET['week_start'])) {
                                 <th>Vegetable</th>
                                 <?php
                                 if ($week_start !== null) {
-                                    $date = date(
-                                        'Y-m-d',
-                                        strtotime($week_start . " +{$i} days")
-                                    );
+                                    for ($i = 0; $i < 5; $i++) {
+                                        $date = date(
+                                            'Y-m-d',
+                                            strtotime($week_start . " +{$i} days")
+                                        );
 
-                                    echo "<td>" .
-                                        htmlspecialchars(
-                                            $menu_data[$date]['vegetable'] ?? ''
-                                        ) .
-                                        "</td>";
+                                        echo "<td>" .
+                                            htmlspecialchars(
+                                                $menu_data[$date]['vegetable'] ?? ''
+                                            ) .
+                                            "</td>";
+                                    }
+                                } else {
+                                    // empty cells before a menu has been generated
+                                    for ($i = 0; $i < 5; $i++) {
+                                        echo "<td></td>";
+                                    }
                                 }
                                 ?>
                             </tr>
@@ -210,16 +247,23 @@ if (isset($_GET['week_start'])) {
                                 <th>Dairy</th>
                                 <?php
                                 if ($week_start !== null) {
-                                    $date = date(
-                                        'Y-m-d',
-                                        strtotime($week_start . " +{$i} days")
-                                    );
+                                    for ($i = 0; $i < 5; $i++) {
+                                        $date = date(
+                                            'Y-m-d',
+                                            strtotime($week_start . " +{$i} days")
+                                        );
 
-                                    echo "<td>" .
-                                        htmlspecialchars(
-                                            $menu_data[$date]['dairy'] ?? ''
-                                        ) .
-                                        "</td>";
+                                        echo "<td>" .
+                                            htmlspecialchars(
+                                                $menu_data[$date]['dairy'] ?? ''
+                                            ) .
+                                            "</td>";
+                                    }
+                                } else {
+                                    // empty cells before a menu has been generated
+                                    for ($i = 0; $i < 5; $i++) {
+                                        echo "<td></td>";
+                                    }
                                 }
                                 ?>
                             </tr>
@@ -228,16 +272,23 @@ if (isset($_GET['week_start'])) {
                                 <th>Drink</th>
                                 <?php
                                 if ($week_start !== null) {
-                                    $date = date(
-                                        'Y-m-d',
-                                        strtotime($week_start . " +{$i} days")
-                                    );
+                                    for ($i = 0; $i < 5; $i++) {
+                                        $date = date(
+                                            'Y-m-d',
+                                            strtotime($week_start . " +{$i} days")
+                                        );
 
-                                    echo "<td>" .
-                                        htmlspecialchars(
-                                            $menu_data[$date]['drink'] ?? ''
-                                        ) .
-                                        "</td>";
+                                        echo "<td>" .
+                                            htmlspecialchars(
+                                                $menu_data[$date]['drink'] ?? ''
+                                            ) .
+                                            "</td>";
+                                    }
+                                } else {
+                                    // empty cells before a menu has been generated
+                                    for ($i = 0; $i < 5; $i++) {
+                                        echo "<td></td>";
+                                    }
                                 }
                                 ?>
                             </tr>
