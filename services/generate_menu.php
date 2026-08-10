@@ -249,9 +249,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
 
             // temporary test
-            echo "<pre>";
-            print_r($menu_data);
-            echo "</pre>";
+            //echo "<pre>";
+            //print_r($menu_data);
+            //echo "</pre>";
+            //exit();
+
+            // insert each gen day into menu table
+            $insert_menu = $pdo->prepare("
+                insert into menu
+                (menu_date, meal_name, estimated_recipients)
+                values
+                (:menu_date, :meal_name, :estimated_recipients)
+            ");
+
+            foreach ($menu_data['days'] as $day) {
+
+                $insert_menu->execute([
+                    'menu_date' => $day['menu_date'],
+                    'meal_name' => $day['meal_name'],
+                    'estimated_recipients' => $estimated_recipients
+                ]);
+            }
+            
+            //test
+            echo "Menu days saved successfully.";
             exit();
 
         } catch (PDOException $e) {
