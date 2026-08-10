@@ -9,6 +9,7 @@ if(!isset($_SESSION['volunteer_id'])){
 
 require_once '../services/db_connect.php';
 $menu_data = [];
+$week_start = null;
 
 //if a generated week is here
 if (isset($_GET['week_start'])) {
@@ -119,7 +120,7 @@ if (isset($_GET['week_start'])) {
                             <tr>
                                 <th>Sandwich</th>
                                 <?php
-                                for ($i = 0; $i < 5; $i++) {
+                                if ($week_start !== null) {
                                     $date = date(
                                         'Y-m-d',
                                         strtotime($week_start . " +{$i} days")
@@ -137,7 +138,7 @@ if (isset($_GET['week_start'])) {
                            <tr>
                                 <th>Sweet</th>
                                 <?php
-                                for ($i = 0; $i < 5; $i++) {
+                                if ($week_start !== null) {
                                     $date = date(
                                         'Y-m-d',
                                         strtotime($week_start . " +{$i} days")
@@ -154,7 +155,7 @@ if (isset($_GET['week_start'])) {
                             <tr>
                                 <th>Salty</th>
                                 <?php
-                                for ($i = 0; $i < 5; $i++) {
+                                if ($week_start !== null) {
                                     $date = date(
                                         'Y-m-d',
                                         strtotime($week_start . " +{$i} days")
@@ -173,7 +174,7 @@ if (isset($_GET['week_start'])) {
                                 <th>Fruit</th>
 
                                 <?php
-                                for ($i = 0; $i < 5; $i++) {
+                                if ($week_start !== null) {
                                     $date = date(
                                         'Y-m-d',
                                         strtotime($week_start . " +{$i} days")
@@ -190,7 +191,7 @@ if (isset($_GET['week_start'])) {
                             <tr>
                                 <th>Vegetable</th>
                                 <?php
-                                for ($i = 0; $i < 5; $i++) {
+                                if ($week_start !== null) {
                                     $date = date(
                                         'Y-m-d',
                                         strtotime($week_start . " +{$i} days")
@@ -208,7 +209,7 @@ if (isset($_GET['week_start'])) {
                             <tr>
                                 <th>Dairy</th>
                                 <?php
-                                for ($i = 0; $i < 5; $i++) {
+                                if ($week_start !== null) {
                                     $date = date(
                                         'Y-m-d',
                                         strtotime($week_start . " +{$i} days")
@@ -226,7 +227,7 @@ if (isset($_GET['week_start'])) {
                             <tr>
                                 <th>Drink</th>
                                 <?php
-                                for ($i = 0; $i < 5; $i++) {
+                                if ($week_start !== null) {
                                     $date = date(
                                         'Y-m-d',
                                         strtotime($week_start . " +{$i} days")
