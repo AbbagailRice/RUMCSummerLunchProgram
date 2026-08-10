@@ -110,7 +110,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 - one vegetable
                 - one dairy item
                 - one drink
-                - one sweet or salty side
             - create balanced menus that avoid repeating the exact same meal every day whenever possible
 
             - for ingredients already in inventory, return the exact item_id and exact item_name provided
@@ -297,6 +296,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 // get the id of the menu that was just inserted
                 $menu_id = $pdo->lastInsertId();
+                
+                // prepare ingredient insert
+                $insert_ingredient = $pdo->prepare("
+                    insert into menu_ingredients
+                    (menu_item_id, item_id, ingredient_name, req_quant, unit)
+                    values
+                    (:menu_item_id, :item_id, :ingredient_name, :req_quant, :unit)
+                ");
 
                 // go through each menu item for that day
                 foreach ($day['items'] as $item) {
@@ -321,6 +328,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         'req_quant' => $estimated_recipients,
                         'unit' => 'servings'
                     ]);
+                    
+                    // get the id of the menu item just inserted
+                    $menu_item_id = $pdo->lastInsertId();
+
+                    // insert each ingredient for this menu item
+                    foreach ($item['ingredients'] as $ingredient) {
+
+                        $insert_ingredient->execute([
+                            'menu_item_id' => $menu_item_id,
+                            'item_id' => $ingredient['item_id'],
+                            'ingredient_name' => $ingredient['ingredient_name'],
+                            'req_quant' => $ingredient['required_quantity'],
+                            'unit' => $ingredient['unit']
+                        ]);
+                    }
                 }
             }
 

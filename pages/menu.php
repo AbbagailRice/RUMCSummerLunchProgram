@@ -23,16 +23,32 @@ if (isset($_GET['week_start'])) {
     );
 
     try {
-
+        // this very longpart is
+        // getting our menu and ingridients 
+        // but also checking if an item is suggested or not.
         $stmt = $pdo->prepare("
             select
                 m.menu_date,
+                mi.menu_item_id,
                 mi.category,
-                mi.menu_item_name
+                mi.menu_item_name,
+                max(
+                    case
+                        when ming.item_id is null then 1
+                        else 0
+                    end
+                ) as is_suggested
             from menu m
             join menu_items mi
                 on m.menu_id = mi.menu_id
+            left join menu_ingredients ming
+                on mi.menu_item_id = ming.menu_item_id
             where m.menu_date between :week_start and :week_end
+            group by
+                m.menu_date,
+                mi.menu_item_id,
+                mi.category,
+                mi.menu_item_name
             order by m.menu_date asc
         ");
 
@@ -42,8 +58,14 @@ if (isset($_GET['week_start'])) {
         ]);
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $display_name = $row['menu_item_name'];
+
+            if ($row['is_suggested']) {
+                $display_name .= ' *';
+            }
+
             $menu_data[$row['menu_date']][$row['category']]
-                = $row['menu_item_name'];
+                = $display_name;
         }
 
     } catch (PDOException $e) {
@@ -294,6 +316,7 @@ if (isset($_GET['week_start'])) {
                             </tr>
                         </tbody>
                     </table>
+                    <p>* Suggested item not currently in inventory</p>
                 </div>
             </div>
         </div>
