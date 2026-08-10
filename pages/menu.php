@@ -8,24 +8,44 @@ if(!isset($_SESSION['volunteer_id'])){
 }
 
 require_once '../services/db_connect.php';
+
 $menu_data = [];
 $week_start = null;
 
-//if a generated week is here
+// if a specific week was passed in
 if (isset($_GET['week_start'])) {
-
     $week_start = $_GET['week_start'];
 
-    // get friday
+} else {
+    // otherwise get the most recently saved menu week
+    $stmt = $pdo->prepare("
+        select max(menu_date) as latest_date
+        from menu
+    ");
+
+    $stmt->execute();
+    $saved_week = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!empty($saved_week['latest_date'])) {
+        // latest date is friday, go back 4 days to monday
+        $week_start = date(
+            'Y-m-d',
+            strtotime($saved_week['latest_date'] . ' -4 days')
+        );
+    }
+}
+
+// load the selected week
+if ($week_start !== null) {
     $week_end = date(
         'Y-m-d',
         strtotime($week_start . ' +4 days')
     );
-
+    
+    // this very longpart is
+    // getting our menu and ingridients 
+    // but also checking if an item is suggested or not.
     try {
-        // this very longpart is
-        // getting our menu and ingridients 
-        // but also checking if an item is suggested or not.
         $stmt = $pdo->prepare("
             select
                 m.menu_date,

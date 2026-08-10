@@ -110,6 +110,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 - one vegetable
                 - one dairy item
                 - one drink
+                - one sweet item
+                - one salty item
             - create balanced menus that avoid repeating the exact same meal every day whenever possible
 
             - for ingredients already in inventory, return the exact item_id and exact item_name provided
@@ -328,7 +330,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         'req_quant' => $estimated_recipients,
                         'unit' => 'servings'
                     ]);
-                    
+
                     // get the id of the menu item just inserted
                     $menu_item_id = $pdo->lastInsertId();
 
