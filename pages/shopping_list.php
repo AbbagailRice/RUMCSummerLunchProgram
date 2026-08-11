@@ -32,16 +32,18 @@ if (!empty($week_start)) {
 
         if ($menu_id) {
 
-            // get shopping list
+            // get shopping list consolidate items
             $stmt = $pdo->prepare("
                 select
-                    shopping_item_id,
                     shopping_item_name,
-                    needed_quant,
+                    sum(needed_quant) as needed_quant,
                     unit,
-                    in_stock
+                    min(in_stock) as in_stock
                 from shopping_list
                 where menu_id = :menu_id
+                group by
+                    shopping_item_name,
+                    unit
                 order by shopping_item_name asc
             ");
 
