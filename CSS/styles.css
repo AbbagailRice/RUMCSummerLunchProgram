@@ -195,7 +195,7 @@
     }
 
 /*add remove button on recipient and inventory management*/
-    .recipient-actions-grid {
+    .recipient-actions-grid .search-container {
         display: flex;
         flex-direction: row;/* aligns children horizontally */
         align-items: flex-end;
@@ -203,25 +203,15 @@
         margin-bottom: 15px;
     }
 
-    .recipient-actions-grid .search-container  {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .recipient-actions-grid form:first-child {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-end;
-        gap: 15px;
-    }
-
     .recipient-actions-grid form {
         margin: 0;
         display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-    }   
+        align-items: flex-end;
+    }
+
+    .recipient-actions-grid form:first-child {
+        gap: 5px;
+    }
 
     .recipient-actions-grid button {
         width: 160px;
