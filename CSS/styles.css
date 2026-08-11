@@ -202,7 +202,12 @@
         gap: 15px;
         margin-bottom: 15px;
     }
+    
+    .recipient-actions-grid .search-container input {
+        height: 35px;
+    }
 
+/* styling for the action buttons and form options for the MENU*/
     .recipient-actions-grid {
         display: flex;
         flex-direction: row;
