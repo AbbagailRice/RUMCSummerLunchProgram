@@ -155,7 +155,20 @@ if ($week_start !== null) {
                             </button>
                         </form>
                     <?php endif; ?>
-
+                    
+                    // generate shopping list button
+                    <form action="../services/generate_shopping_list.php" method="post">
+                        <input
+                            type="hidden"
+                            name="week_start"
+                            value="<?php echo htmlspecialchars($week_start ?? ''); ?>"
+                        >
+                        <button type="submit">
+                            <div class="action-item-box">
+                                <span class="action-label">Generate Shopping List</span>
+                            </div>
+                        </button>
+                    </form>
                 </div>
 
                 <div class="menu-table-container">
