@@ -52,11 +52,53 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ]);
 
         $shopping_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if (empty($shopping_items)) {
+            die("No shopping items are needed for this menu.");
+        }
 
-        // temp test
-        echo "<pre>";
-        print_r($shopping_items);
-        echo "</pre>";
+        // prepare insert
+        $insert_item = $pdo->prepare("
+            insert into shopping_list
+            (menu_id, shopping_item_name, needed_quant, unit, in_stock)
+            values
+            (:menu_id, :shopping_item_name, :needed_quant, :unit, 0)
+        ");
+
+        // get first menu id for the week
+        $menu_stmt = $pdo->prepare("
+            select menu_id
+            from menu
+            where menu_date between :week_start and :week_end
+            order by menu_date asc
+            limit 1
+        ");
+
+        $menu_stmt->execute([
+            'week_start' => $week_start,
+            'week_end' => $week_end
+        ]);
+
+        $menu_id = $menu_stmt->fetchColumn();
+
+        if (!$menu_id) {
+            die("Error: No menu was found for this week.");
+        }
+        // save items
+        foreach ($shopping_items as $item) {
+
+            $insert_item->execute([
+                'menu_id' => $menu_id,
+                'shopping_item_name' => $item['ingredient_name'],
+                'needed_quant' => $item['needed_quant'],
+                'unit' => $item['unit']
+            ]);
+        }
+        // redirect to menu with shopping list param
+        header(
+            "Location: ../pages/menu.php?week_start=" .
+            urlencode($week_start) .
+            "&shopping_list=1"
+        );
         exit();
 
     } catch (PDOException $e) {
