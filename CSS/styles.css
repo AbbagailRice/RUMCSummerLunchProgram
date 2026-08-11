@@ -195,7 +195,7 @@
     }
 
 /*add remove button on recipient and inventory management*/
-    .recipient-actions-grid .search-container {
+    .recipient-actions-grid, .recipient-actions-grid .search-container {
         display: flex;
         flex-direction: row;/* aligns children horizontally */
         align-items: flex-end;
