@@ -124,7 +124,7 @@ if ($week_start !== null) {
 
                 <h3>Generate Weekly Menu</h3>
 
-                <div class="menu-actions-grid">
+                <div class="recipient-actions-grid">
                     <form action="../services/generate_menu.php" method="post">
                         <div class="form-options">
                             <label for="estimated_recipients">Estimated Recipients *</label><br>
