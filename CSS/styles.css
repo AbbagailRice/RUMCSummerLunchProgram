@@ -196,7 +196,6 @@
 
 /*add remove button on recipient and inventory management*/
     .recipient-actions-grid {
-        height: 35px;
         display: flex;
         flex-direction: row;/* aligns children horizontally */
         align-items: bottom;
@@ -204,10 +203,18 @@
         margin-bottom: 15px;
     }
 
-    .recipient-actions-grid .search-container .menu-actions-grid {
+    .recipient-actions-grid .search-container {
         display: flex;
         align-items: center;
         gap: 5px;
+    }
+    .action-item-box {
+        width: 160px;
+        height: 35px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
 
