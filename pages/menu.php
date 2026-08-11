@@ -136,13 +136,13 @@ if ($week_start !== null) {
                                 required
                             >
                         </div>
-                        <br>
-                        <button type="submit">
-                            <div class="action-item-box">
-                                <span class="action-label">Generate Menu</span>
-                            </div>
-                        </button>
                     </form>
+
+                    <button type="submit">
+                        <div class="action-item-box">
+                            <span class="action-label">Generate Menu</span>
+                        </div>
+                    </button>
 
                     <?php if ($week_start !== null): ?>
                         <form action="../services/clear_menu.php" method="post">
