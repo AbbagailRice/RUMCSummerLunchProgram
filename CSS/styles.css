@@ -200,7 +200,7 @@
         flex-direction: row;/* aligns children horizontally */
         align-items: center;
         gap: 15px;
-        margin-bottom: 15px;
+        margin-bottom: 0px;
     }
     
     .recipient-actions-grid .search-container input {
