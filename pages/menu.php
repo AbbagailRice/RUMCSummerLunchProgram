@@ -130,7 +130,7 @@ if ($week_start !== null) {
                             <label for="estimated_recipients">
                                 Estimated Recipients *
                             </label>
-                            <br>
+                            
                             <input
                                 type="number"
                                 name="estimated_recipients"

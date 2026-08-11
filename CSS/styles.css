@@ -195,9 +195,17 @@
     }
 
 /*add remove button on recipient and inventory management*/
-    .recipient-actions-grid, .recipient-actions-grid .search-container {
+    .recipient-actions-grid .search-container {
         display: flex;
         flex-direction: row;/* aligns children horizontally */
+        align-items: flex-end;
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+
+    .recipient-actions-grid {
+        display: flex;
+        flex-direction: row;
         align-items: flex-end;
         gap: 15px;
         margin-bottom: 15px;
@@ -206,11 +214,14 @@
     .recipient-actions-grid form {
         margin: 0;
         display: flex;
+        flex-direction: row;
         align-items: flex-end;
+        gap: 15px;
     }
 
-    .recipient-actions-grid form:first-child {
-        gap: 5px;
+    .recipient-actions-grid .form-options {
+        display: flex;
+        flex-direction: column;
     }
 
     .recipient-actions-grid button {
@@ -222,37 +233,10 @@
     .action-item-box {
         width: 100%;
         height: 100%;
-
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
 
-/*for mobile and tablets and such*/
-    /*not working*/
-    @media (max-width: 768px) {
-        /* fix forcing things past the mobile view sceen */
-        .layout, .main-content {
-            height: 100vh;
-            max-height: calc(100vh - 60px);
-            overflow: hidden;
-        }
 
-        .workspace-container, .admin-container {
-            height: 100% !important;
-            max-height: 100% !important;
-            box-sizing: border-box;
-        }
-
-        /* tighten around contents */
-        .dashboard-workspace, .attendance-workspace, .manage-workspace, .register-container, .pending-container {
-            display: flex !important;
-            flex-direction: column !important;
-            justify-content: space-between !important;
-            align-items: center !important;
-            height: 100% !important;
-            box-sizing: border-box;
-        }
-
-    }
