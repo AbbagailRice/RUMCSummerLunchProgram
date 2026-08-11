@@ -219,7 +219,7 @@
         gap: 15px;
     }
 
-    .recipient-actions-grid .form-options {
+    .recipient-actions-grid form:first-child .form-options {
         display: flex;
         flex-direction: column;
     }
