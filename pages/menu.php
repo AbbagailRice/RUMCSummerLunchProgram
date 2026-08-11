@@ -156,7 +156,7 @@ if ($week_start !== null) {
                         </form>
                     <?php endif; ?>
                     
-                    // generate shopping list button
+                    <!-- generate shopping list button -->
                     <form action="../services/generate_shopping_list.php" method="post">
                         <input
                             type="hidden"
