@@ -127,7 +127,10 @@ if ($week_start !== null) {
                 <div class="recipient-actions-grid">
                     <form action="../services/generate_menu.php" method="post">
                         <div class="form-options">
-                            <label for="estimated_recipients">Estimated Recipients *</label><br>
+                            <label for="estimated_recipients">
+                                Estimated Recipients *
+                            </label>
+                            <br>
                             <input
                                 type="number"
                                 name="estimated_recipients"
@@ -135,12 +138,13 @@ if ($week_start !== null) {
                                 min="1"
                                 required
                             >
-                            <button type="submit">
-                                <div class="action-item-box">
-                                    <span class="action-label">Generate Menu</span>
-                                </div>
-                            </button>
                         </div>
+
+                        <button type="submit">
+                            <div class="action-item-box">
+                                <span class="action-label">Generate Menu</span>
+                            </div>
+                        </button>
                     </form>
 
                     <?php if ($week_start !== null): ?>
