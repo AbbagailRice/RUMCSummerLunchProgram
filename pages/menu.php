@@ -41,7 +41,7 @@ if ($week_start !== null) {
         'Y-m-d',
         strtotime($week_start . ' +4 days')
     );
-    
+
     // this very longpart is
     // getting our menu and ingridients 
     // but also checking if an item is suggested or not.
@@ -137,11 +137,24 @@ if ($week_start !== null) {
                         </button>
                     </form>
 
-                    <button type="button" id="clearMenuBtn">
-                        <div class="action-item-box">
-                            <span class="action-label">Clear</span>
-                        </div>
-                    </button>
+                    <?php if ($week_start !== null): ?>
+                        <form action="../services/clear_menu.php" method="post">
+                            <input
+                                type="hidden"
+                                name="week_start"
+                                value="<?php echo htmlspecialchars($week_start); ?>"
+                            >
+                            <button
+                                type="submit"
+                                id="clearMenuBtn"
+                                onclick="return confirm('Are you sure you want to clear this weekly menu?');"
+                            >
+                                <div class="action-item-box">
+                                    <span class="action-label">Clear</span>
+                                </div>
+                            </button>
+                        </form>
+                    <?php endif; ?>
 
                 </div>
 
@@ -336,7 +349,7 @@ if ($week_start !== null) {
                             </tr>
                         </tbody>
                     </table>
-                    <p>* Suggested item not currently in inventory</p>
+                    <p>* Suggested item not currently in inventory or not enough in inventory</p>
                 </div>
             </div>
         </div>
