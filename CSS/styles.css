@@ -207,6 +207,10 @@
         height: 35px;
     }
 
+    .recipient-actions-grid:has(.search-container) {
+        align-items: center;
+    }
+
 /* styling for the action buttons and form options for the MENU*/
     .recipient-actions-grid {
         display: flex;
@@ -215,6 +219,7 @@
         gap: 15px;
         margin-bottom: 15px;
     }
+    
 
     .recipient-actions-grid form {
         margin: 0;
