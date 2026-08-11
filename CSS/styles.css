@@ -198,7 +198,7 @@
     .recipient-actions-grid {
         display: flex;
         flex-direction: row;/* aligns children horizontally */
-        align-items: bottom;
+        align-items: flex-end;
         gap: 15px;
         margin-bottom: 15px;
     }
@@ -208,7 +208,7 @@
         align-items: center;
         gap: 5px;
     }
-    
+
     .recipient-actions-grid button {
         width: 160px;
         height: 35px;
