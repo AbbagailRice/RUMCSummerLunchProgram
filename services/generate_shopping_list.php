@@ -80,6 +80,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $menu_id = $menu_stmt->fetchColumn();
 
+        // remove old shopping list
+        $delete_list = $pdo->prepare("
+            delete from shopping_list
+            where menu_id = :menu_id
+        ");
+
+        $delete_list->execute([
+            'menu_id' => $menu_id
+        ]);
+
         if (!$menu_id) {
             die("Error: No menu was found for this week.");
         }

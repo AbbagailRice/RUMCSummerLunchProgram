@@ -94,6 +94,13 @@ if ($week_start !== null) {
 }
 ?>
 
+<!-- success message for list -->
+<?php if (isset($_GET['shopping_list']) && $_GET['shopping_list'] == 1): ?>
+    <div class="success-message">
+        Shopping list generated successfully.
+    </div>
+<?php endif; ?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -166,6 +173,20 @@ if ($week_start !== null) {
                         <button type="submit">
                             <div class="action-item-box">
                                 <span class="action-label">Generate Shopping List</span>
+                            </div>
+                        </button>
+                    </form>
+                    <!-- view shopping list button -->
+                    <form action="../pages/shopping_list.php" method="get">
+                        <input
+                            type="hidden"
+                            name="week_start"
+                            value="<?php echo htmlspecialchars($week_start ?? ''); ?>"
+                        >
+
+                        <button type="submit">
+                            <div class="action-item-box">
+                                <span class="action-label">View Shopping List</span>
                             </div>
                         </button>
                     </form>
