@@ -203,9 +203,6 @@
         margin-bottom: 0px;
     }
     
-    .recipient-actions-grid .search-container input {
-        height: 35px;
-    }
 
     .recipient-actions-grid:has(.search-container) {
         align-items: center;
