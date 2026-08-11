@@ -203,16 +203,23 @@
         margin-bottom: 15px;
     }
 
-    .recipient-actions-grid .search-container form:first-child  {
+    .recipient-actions-grid .search-container  {
         display: flex;
         align-items: center;
         gap: 5px;
     }
 
+    .recipient-actions-grid form:first-child {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 15px;
+    }
+
     .recipient-actions-grid form {
         margin: 0;
     }   
-    
+
     .recipient-actions-grid button {
         width: 160px;
         height: 35px;
